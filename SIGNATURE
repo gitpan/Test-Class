@@ -15,13 +15,13 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 38c8725cdc2ba1f920dab7f77cec7a164691db09 Build.PL
-SHA1 6d4c687f0af0ab971118641a1126121d431b5814 Changes
+SHA1 010cb5bd99e377765cf0cba001bfa8d1de8650d1 Changes
 SHA1 d0b8d5f8a8d2d5c03e181c61b08cef25e5929345 MANIFEST
-SHA1 feb4c85f386f3295cd61dc4512028ed8a4b434d6 META.yml
+SHA1 d56606a4df7b22e22f5f802c941a0e1d6c311810 META.yml
 SHA1 ae2d20440ed3844c495657e7b5d9b2179266955f Makefile.PL
 SHA1 da39a3ee5e6b4b0d3255bfef95601890afd80709 README
-SHA1 47591e4003bd2e4b2354fb448bba3fd08c05b987 lib/Test/Class.pm
-SHA1 ebc528e67aa54a9c1a632571f66023409f227b55 lib/Test/Class.pod
+SHA1 ef7d689cabe2c8ecf34762140bb754761b15da98 lib/Test/Class.pm
+SHA1 fc39ee8f2ba557de451c51d75961e80d135d2bfe lib/Test/Class.pod
 SHA1 a2533ae138e3a31cbd6b3ee3088a9da167fb9ae9 lib/Test/Class/MethodInfo.pm
 SHA1 6163d4a98be9ed2feefb7526888c19ee6745d90e t/_new.t
 SHA1 9de7c32c8f173a99e71fb8e46ca6a772d731f165 t/bailout.t
@@ -55,13 +55,13 @@ SHA1 cea00e19fb5181d7e2976434d5cc4082c0808eec t/skip2.t
 SHA1 120058af41f616ebb5494543e8877db0f90ac305 t/skip_class_reason.t
 SHA1 06922a3ff6292867f4fcf28d5e333ec9f9502f26 t/spaces.t
 SHA1 4b9050b950e9bf431db42a749c977ff82b774b39 t/startup.t
-SHA1 a072f21a8e67972cf730e997d35ac424785a25b3 t/test_classes.t
+SHA1 ac2c72e82712934fe3bb51b2f8314d6d48636d07 t/test_classes.t
 SHA1 4c528832d492e9aa20bd0e2abcfd7297ba6d99eb t/test_verbose.t
 SHA1 15292fd0d83967deacea44c06f725854cebf60d3 t/todo.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.4 (Darwin)
 
-iD8DBQFB/WPcaOJcDd+05vARAml/AJ9shqv6iQvyoREMfvxh038wZ+3swgCgkpTH
-8iYuXXQQlRARfJuQPrkuBOc=
-=hVSp
+iD8DBQFCArCQaOJcDd+05vARAnMUAJ96lWxa9MenijsCJrJrclIP1kkhKgCcCpDn
+t1lFv0g9mXXUp+5HcwDpObw=
+=/w/G
 -----END PGP SIGNATURE-----
