@@ -1,28 +1,47 @@
 #! /usr/bin/perl -w
 
-use strict;
+package Local::Test;
 use base qw(Test::Class);
-use Test::Builder::Tester tests => 2;
-use Test::More;
 
-sub _only : Test(setup) {
+use strict;
+use Test;
+use Test::Builder;
+use Fcntl;
+use IO::File;
+
+plan tests => 6;
+
+sub _only : Test(setup => 1) {
 	my $self = shift;
+	$self->builder->ok(1==1);
 	$self->SKIP_ALL("skippy");
 };
 
 sub test : Test(3) { die "this should never run!" };
 
-test_out("1..3");
-test_out("ok 1 # skip skippy");
-test_out("ok 2 # skip skippy");
-test_out("ok 3 # skip skippy");
+my $io = IO::File->new_tmpfile or die "couldn't create tmp file ($!)\n";
+my $Test = Test::Builder->new;				
+$Test->output($io);
+$Test->failure_output($io);
 
-plan tests => 3;
 $ENV{TEST_VERBOSE}=0;
-__PACKAGE__->runtests;
+Local::Test->runtests;
 
 END {
-	test_test("SKIP_ALL skipped tests");
-	is($?, 0, "exit value okay");
+	seek $io, SEEK_SET, 0;
+	while (my $actual = <$io>) {
+		chomp($actual);
+		my $expected=<DATA>; chomp($expected);
+		ok($actual, $expected);
+	};
+
+	ok($?, 0, "exit value okay");
 	$?=0;
 };
+
+__DATA__
+1..4
+ok 1
+ok 2 # skip skippy
+ok 3 # skip skippy
+ok 4 # skip skippy

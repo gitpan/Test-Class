@@ -9,7 +9,7 @@ use Class::ISA;
 use Test::Builder;
 use Attribute::Handlers;
 use Storable qw(dclone);
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 
@@ -749,23 +749,24 @@ sub _has_plan { $Builder->expected_tests || $Builder->current_test };
 
 sub _is_num_tests { shift =~ m/^(no_plan)|(\+?\d+)$/s };
 
+sub _is_method_type { shift =~ m/^(setup|tests|teardown)$/s };
 
 sub _parse_args {
 	my $args = shift;
-	my $definition = {num_tests => 0};
+	my $info = {num_tests => 0};
 	$args = "tests => 1" unless defined($args);
 	foreach my $arg (split /\s*=>\s*/, $args) {
 		if (_is_num_tests($arg)) {
-			$definition->{num_tests} = $arg;
-		} elsif ($arg =~ m/^(setup|tests|teardown)$/s) {
-			$definition->{$arg} = 1;
+			$info->{num_tests} = $arg;
+		} elsif (_is_method_type($arg)) {
+			$info->{$arg} = 1;
 		} else {
 			return(undef);
 		};
 	};
-	$definition->{tests} = 1
-			unless $definition->{setup} || $definition->{teardown};
-	return($definition);
+	$info->{tests} = 1
+			unless $info->{setup} || $info->{teardown};
+	return($info);
 };
 
 
@@ -821,9 +822,9 @@ sub Test : ATTR(CODE,RAWDATA) {
 		return;
 	};
 	my $name = *{$symbol}{NAME};
-	my $definition = _parse_args($args);	
-	if ($definition) {
-		$Tests->{$class}->{$name} = $definition;
+	my $info = _parse_args($args);	
+	if ($info) {
+		$Tests->{$class}->{$name} = $info;
 	} else {
 		warn "bad test definition '$args' in $class->$name\n";
 	};	
@@ -925,9 +926,8 @@ sub _get_methods {
 	my $class = ref($self) || $self;
 	my %methods = ();
 	foreach my $class (Class::ISA::self_and_super_path($class)) {
-		foreach my $method (keys %{$self->_Tests->{$class}}) {
-			$methods{$method} = 1 
-					if $self->_Tests->{$class}->{$method}->{$type};
+		while (my ($name, $info) = each %{$self->_Tests->{$class}}) {
+			$methods{$name} = 1 if $info->{$type};
 		};
 	};
 	return(sort keys %methods);
@@ -1028,8 +1028,8 @@ sub total_num_tests {
 sub _find_calling_test_class {
 	my $level = 0;
 	while (my $class = caller(++$level)) {
-		return($class) 
-				if $class->isa('Test::Class') && $class ne "Test::Class"
+		next if $class eq "Test::Class";
+		return($class) if $class->isa('Test::Class');
 	}; 
 	return(undef);
 };
@@ -1105,15 +1105,14 @@ sub num_method_tests {
 	my ($self, $method, $n) = @_;
 	my $class = $self->_find_calling_test_class;
 	croak "not called in a Test::Class" unless $class;
-	my $definition = $self->_Tests->{$class}->{$method};
-	croak "$method is not a test method of class $class" 
-			unless $definition;
+	my $info = $self->_Tests->{$class}->{$method};
+	croak "$method is not a test method of class $class" unless $info;
 	if (defined($n)) {
 		croak "$n is not a valid number of tests" 
 				unless _is_num_tests($n);
-		$definition->{num_tests} = $n;
+		$info->{num_tests} = $n;
 	};
-	return($definition->{num_tests});
+	return($info->{num_tests});
 };
 
 

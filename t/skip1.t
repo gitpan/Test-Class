@@ -3,6 +3,7 @@
 use strict;
 use base qw(Test::Class);
 use Test::More;
+use Test::Builder;
 use Fcntl;
 use IO::File;
 

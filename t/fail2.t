@@ -1,16 +1,19 @@
 #! /usr/bin/perl -w
 
 use strict;
+use Test;
+use Test::Builder;
+use Fcntl;
+use IO::File;
+use POSIX qw(_exit);
 
-$ENV{TEST_VERBOSE}=0;
 
 package Object;
-
 sub new {return(undef)};
 
-package main;
+
+package Object::Test;
 use base qw(Test::Class);
-use Test::Builder::Tester tests => 2;
 use Test::More;
 
 sub _test_new : Test(3) {
@@ -19,22 +22,38 @@ sub _test_new : Test(3) {
 		|| $self->FAIL_ALL('cannot create Objects');
 };
 
-test_out("1..3");
-test_out("not ok 1 - The object isa Object");
-test_err("#     Failed test (t/fail2.t at line 18)");
-test_err("#     The object isn't defined");
-test_out("not ok 2 - cannot create Objects");
-test_err("#     Failed test (t/fail2.t at line 18)");
-test_out("not ok 3 - cannot create Objects");
-test_err("#     Failed test (t/fail2.t at line 18)");
 
+package main;
 
-plan tests => 3;
+plan tests => 9;
 
-__PACKAGE__->runtests;
+my $io = IO::File->new_tmpfile or die "couldn't create tmp file ($!)\n";
+my $Test = Test::Builder->new;				
+$Test->output($io);
+$Test->failure_output($io);
+
+$ENV{TEST_VERBOSE}=0;
+Object::Test->runtests;
 
 END {
-	test_test("FAIL_ALL in method");
-	is($?, 255, "exit value okay");
-	$?=0;
+	$|=1;
+	seek $io, SEEK_SET, 0;
+	while (my $actual = <$io>) {
+		chomp($actual);
+		my $expected=<DATA>; chomp($expected);
+		ok($actual, $expected);
+	};
+
+	ok($?, 255);
+	_exit(0); # need to stop Test::Builder's $? tweak
 };
+
+__DATA__
+1..3
+not ok 1 - The object isa Object
+#     Failed test (t/fail2.t at line 21)
+#     The object isn't defined
+not ok 2 - cannot create Objects
+#     Failed test (t/fail2.t at line 21)
+not ok 3 - cannot create Objects
+#     Failed test (t/fail2.t at line 21)
