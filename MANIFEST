@@ -20,6 +20,7 @@ t/fail2.t
 t/fail3.t
 t/header.t
 t/late_header.t
+t/named_test.t
 t/num_method_tests.t
 t/num_tests.t
 t/pod.t
@@ -34,6 +35,7 @@ t/runtests_return.t
 t/runtests_trailing.t
 t/skip1.t
 t/skip2.t
+t/spaces.t
 t/startup.t
 t/test_verbose.t
 t/todo.t

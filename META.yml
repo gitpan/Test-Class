@@ -1,7 +1,7 @@
 # http://module-build.sourceforge.net/META-spec.html
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
 name:         Test-Class
-version:      0.06_3
+version:      0.06_4
 version_from: lib/Test/Class.pm
 installdirs:  site
 requires:
