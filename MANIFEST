@@ -37,6 +37,7 @@ t/runtests_return.t
 t/runtests_trailing.t
 t/skip1.t
 t/skip2.t
+t/skip_class_reason.t
 t/spaces.t
 t/startup.t
 t/test_verbose.t
