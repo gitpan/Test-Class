@@ -14,7 +14,7 @@ use Test::Builder;
 use Test::Class::MethodInfo;
 
 
-our $VERSION = '0.06_6';
+our $VERSION = '0.06_7';
 
 
 use constant NO_PLAN	=> "no_plan";
@@ -32,7 +32,9 @@ sub current_method { $Current_method };
 my $Builder = Test::Builder->new;
 sub builder { $Builder };
 
+
 my $Tests = {};
+
 
 my %_Test;  # inside-out object field indexed on $self
 

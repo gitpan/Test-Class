@@ -1,3 +1,4 @@
+Build.PL
 Changes
 lib/Test/Class.pm
 lib/Test/Class.pod
@@ -40,3 +41,5 @@ t/spaces.t
 t/startup.t
 t/test_verbose.t
 t/todo.t
+
+SIGNATURE    Added here by Module::Build
