@@ -20,6 +20,7 @@ t/fail2.t
 t/fail3.t
 t/header.t
 t/late_header.t
+t/methodinfo.t
 t/named_test.t
 t/num_method_tests.t
 t/num_tests.t

@@ -14,7 +14,7 @@ use Test::Builder;
 use Test::Class::MethodInfo;
 
 
-our $VERSION = '0.06_4';
+our $VERSION = '0.06_5';
 
 
 use constant NO_PLAN	=> "no_plan";
@@ -56,44 +56,38 @@ sub _methods_of_class {
 	return(values %{_test_info($self)->{$class}});
 };
 
-sub add_method {
-	my ($class, $name, $num_tests, $types) = @_;
-	$Tests->{$class}->{$name} = Test::Class::MethodInfo->new(
-        name => $name, 
-        num_tests => $num_tests,
-        type => $types,
-    );	
-};
-
-sub _new_method_info {
-	my ($class, $method_name, $args) = @_;
-	my $num_tests = 0;
-	my @types;
-	$args ||= "test => 1";
+sub _parse_attribute_args {
+    my $args = shift || '';
+	my $num_tests;
+	my $type;
 	$args =~ s/\s+//sg;
 	foreach my $arg (split /=>/, $args) {
 		if (Test::Class::MethodInfo->is_num_tests($arg)) {
 			$num_tests = $arg;
 		} elsif (Test::Class::MethodInfo->is_method_type($arg)) {
-			push @types, $arg;
+			$type = $arg;
 		} else {
-			return(undef);
+			die 'bad attribute args';
 		};
 	};
-	push @types, TEST unless @types;
-	$class->add_method($method_name, $num_tests, [@types]);
-	return(1);
+	return( $type, $num_tests );
 };
 
 sub Test : ATTR(CODE,RAWDATA) {
 	my ($class, $symbol, $code_ref, $attr, $args) = @_;
 	if ($symbol eq "ANON") {
 		warn "cannot test anonymous subs\n";
-		return;
-	};
-	my $name = *{$symbol}{NAME};
-    _new_method_info($class, $name, $args)
-			|| warn "bad test definition '$args' in $class->$name\n";	
+	} else {
+        my $name = *{$symbol}{NAME};
+        eval { 
+            my ($type, $num_tests) = _parse_attribute_args($args);        
+            $Tests->{$class}->{$name} = Test::Class::MethodInfo->new(
+                name => $name, 
+                num_tests => $num_tests,
+                type => $type,
+            );	
+        } || warn "bad test definition '$args' in $class->$name\n";	
+    };
 };
 
 sub new {
@@ -336,13 +330,13 @@ sub BAILOUT {
 	$Builder->BAILOUT($reason);
 };
 
-sub _last_test {
+sub _last_test_if_exiting_immediately {
     $Builder->expected_tests || $Builder->current_test+1
 };
 
 sub FAIL_ALL {
 	my ($self, $reason) = @_;
-	my $last_test = _last_test();
+	my $last_test = _last_test_if_exiting_immediately();
 	$Builder->expected_tests( $last_test ) unless $Builder->has_plan;
 	$Builder->ok(0, $reason) until $Builder->current_test >= $last_test;
 	my $num_failed = grep( !$_, $Builder->summary );
@@ -352,7 +346,7 @@ sub FAIL_ALL {
 sub SKIP_ALL {	
 	my ($self, $reason) = @_;
 	$Builder->skip_all( $reason ) unless $Builder->has_plan;
-	my $last_test = _last_test();
+	my $last_test = _last_test_if_exiting_immediately();
 	$Builder->skip( $reason ) 
 	    until $Builder->current_test >= $last_test;
 	exit(0);
