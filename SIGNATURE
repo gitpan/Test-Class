@@ -15,13 +15,13 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 38c8725cdc2ba1f920dab7f77cec7a164691db09 Build.PL
-SHA1 aa238238ff04ecc00d8c97e0e947bfd3da0aa1d6 Changes
-SHA1 77206c9fa89e6b913630eeca239d4ce112f7a546 MANIFEST
-SHA1 295d16ebb09dab40fc00de02717e98272f8a5561 META.yml
+SHA1 6d4c687f0af0ab971118641a1126121d431b5814 Changes
+SHA1 d0b8d5f8a8d2d5c03e181c61b08cef25e5929345 MANIFEST
+SHA1 feb4c85f386f3295cd61dc4512028ed8a4b434d6 META.yml
 SHA1 ae2d20440ed3844c495657e7b5d9b2179266955f Makefile.PL
 SHA1 da39a3ee5e6b4b0d3255bfef95601890afd80709 README
-SHA1 489f766b9f9546414fec5c24fc4146cb186fa985 lib/Test/Class.pm
-SHA1 c42e62f42adc0edb295900c893ef90c79bb3b7cd lib/Test/Class.pod
+SHA1 47591e4003bd2e4b2354fb448bba3fd08c05b987 lib/Test/Class.pm
+SHA1 ebc528e67aa54a9c1a632571f66023409f227b55 lib/Test/Class.pod
 SHA1 a2533ae138e3a31cbd6b3ee3088a9da167fb9ae9 lib/Test/Class/MethodInfo.pm
 SHA1 6163d4a98be9ed2feefb7526888c19ee6745d90e t/_new.t
 SHA1 9de7c32c8f173a99e71fb8e46ca6a772d731f165 t/bailout.t
@@ -30,7 +30,6 @@ SHA1 da18b1e2a289f4ab07874d001d73ffe63a343ea5 t/compile.t
 SHA1 9ffae8e886ab66b88e00b23508e6311c04b3f821 t/current_method.t
 SHA1 b9650c1e78625ae8a246d1d3471c6a42127c3233 t/die_before_plan.t
 SHA1 871e199ac6ddbf64f01da4bed04482c20915d4f4 t/documented.t
-SHA1 edcc59ab6ebf0ab60e8e76e029bb90be55737439 t/example.t
 SHA1 d102f9c842dbc396714f60c87435c8361b32ccbf t/expected_tests.t
 SHA1 7e6d58e83d5613f9e85e1da7ba1ec6e2bc78bf43 t/fail1.t
 SHA1 a8c5ec5f22de3650512c60a5ff03f86a5ca2d81f t/fail2.t
@@ -56,12 +55,13 @@ SHA1 cea00e19fb5181d7e2976434d5cc4082c0808eec t/skip2.t
 SHA1 120058af41f616ebb5494543e8877db0f90ac305 t/skip_class_reason.t
 SHA1 06922a3ff6292867f4fcf28d5e333ec9f9502f26 t/spaces.t
 SHA1 4b9050b950e9bf431db42a749c977ff82b774b39 t/startup.t
+SHA1 a072f21a8e67972cf730e997d35ac424785a25b3 t/test_classes.t
 SHA1 4c528832d492e9aa20bd0e2abcfd7297ba6d99eb t/test_verbose.t
 SHA1 15292fd0d83967deacea44c06f725854cebf60d3 t/todo.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.4 (Darwin)
 
-iD8DBQFB+SjkaOJcDd+05vARAisPAJ0eBjZjUDFPj9bvI4yyJDDXmgGZ5QCgkRFq
-PZmsCU72+2IGoLbp7zOvO2A=
-=HEym
+iD8DBQFB/WPcaOJcDd+05vARAml/AJ9shqv6iQvyoREMfvxh038wZ+3swgCgkpTH
+8iYuXXQQlRARfJuQPrkuBOc=
+=hVSp
 -----END PGP SIGNATURE-----
