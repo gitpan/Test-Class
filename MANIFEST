@@ -24,6 +24,7 @@ t/methodinfo.t
 t/named_test.t
 t/num_method_tests.t
 t/num_tests.t
+t/override.t
 t/pod.t
 t/run_all_tests.t
 t/runtests.t
@@ -39,7 +40,9 @@ t/skip2.t
 t/skip_class_reason.t
 t/spaces.t
 t/startup.t
+t/startup_that_dies.t
 t/test_classes.t
 t/test_verbose.t
+t/Tests.t
 t/todo.t
 SIGNATURE    Added here by Module::Build

@@ -14,7 +14,7 @@ use Test::Builder;
 use Test::Class::MethodInfo;
 
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 
 use constant NO_PLAN	=> "no_plan";
@@ -50,7 +50,7 @@ sub _test_info {
 
 sub _method_info {
 	my ($self, $class, $method) = @_;
-	return(_test_info($self)->{$class}->{$method});
+	return( _test_info($self)->{$class}->{$method} );
 };
 
 sub _methods_of_class {
@@ -75,11 +75,14 @@ sub _parse_attribute_args {
 	return( $type, $num_tests );
 };
 
-sub Tests : ATTR(CODE,RAWDATA) {
-	my ($class, $symbol, $code_ref, $attr, $args) = @_;
-    $args ||= 'no_plan';
-    Test( $class, $symbol, $code_ref, $attr, $args );
-};
+sub _is_public_method {
+    my ($class, $name) = @_;
+    foreach my $parent_class ( Class::ISA::super_path( $class ) ) {
+        return unless $parent_class->can( $name );
+        return if _method_info( $class, $parent_class, $name );
+    }
+    return 1;
+}
 
 sub Test : ATTR(CODE,RAWDATA) {
 	my ($class, $symbol, $code_ref, $attr, $args) = @_;
@@ -87,6 +90,8 @@ sub Test : ATTR(CODE,RAWDATA) {
 		warn "cannot test anonymous subs\n";
 	} else {
         my $name = *{$symbol}{NAME};
+        warn "overriding public method $name with a test method in $class\n"
+                if _is_public_method( $class, $name );
         eval { 
             my ($type, $num_tests) = _parse_attribute_args($args);        
             $Tests->{$class}->{$name} = Test::Class::MethodInfo->new(
@@ -98,6 +103,11 @@ sub Test : ATTR(CODE,RAWDATA) {
     };
 };
 
+sub Tests : ATTR(CODE,RAWDATA) {
+	my ($class, $symbol, $code_ref, $attr, $args) = @_;
+    $args ||= 'no_plan';
+    Test( $class, $symbol, $code_ref, $attr, $args );
+};
 
 sub new {
 	my $proto = shift;
@@ -190,7 +200,7 @@ sub _exception_failure {
 	local $Test::Builder::Level = 3;
 	my $message = $method;
 	$message .= " (for test method '$Current_method')"
-			if $method ne $Current_method;
+			if defined $Current_method && $method ne $Current_method;
 	_show_header($self, @$tests) unless $Builder->has_plan;
 	$Builder->ok(0, "$message died ($exception)");
 };
@@ -266,7 +276,7 @@ sub runtests {
 		@tests = _test_classes( $base_class );
 	};
 	my $all_passed = 1;
-	foreach my $t (@tests) {
+	TEST_OBJECT: foreach my $t (@tests) {
 		# SHOULD ALSO ALLOW NO_PLAN
 		next if $t =~ m/^\d+$/;
 		croak "$t not Test::Class or integer" 
@@ -276,16 +286,17 @@ sub runtests {
             $Builder->skip( $reason ) unless $reason eq "1";
         } else {
             $t = $t->new unless ref($t);
-            my $class = ref($t);
-            my @setup = _get_methods($t, SETUP);
-            my @teardown = _get_methods($t, TEARDOWN);
             foreach my $method (_get_methods($t, STARTUP)) {
                 _show_header($t, @tests) 
                         unless $Builder->has_plan 
                         || _total_num_tests($t, $method) eq '0';
                 my $method_passed = _run_method($t, $method, \@tests);
                 $all_passed &&= $method_passed;
+                next TEST_OBJECT unless $method_passed;
             };
+            my $class = ref($t);
+            my @setup = _get_methods($t, SETUP);
+            my @teardown = _get_methods($t, TEARDOWN);
             foreach my $test (_get_methods($t, TEST)) { 
                 local $Current_method = $test;
                 $Builder->diag("\n$class->$test") if $ENV{TEST_VERBOSE};

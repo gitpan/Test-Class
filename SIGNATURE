@@ -15,14 +15,15 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 38c8725cdc2ba1f920dab7f77cec7a164691db09 Build.PL
-SHA1 010cb5bd99e377765cf0cba001bfa8d1de8650d1 Changes
-SHA1 d0b8d5f8a8d2d5c03e181c61b08cef25e5929345 MANIFEST
-SHA1 d56606a4df7b22e22f5f802c941a0e1d6c311810 META.yml
+SHA1 96b93282e88d2d9dafe8b4b45b85436918524832 Changes
+SHA1 f8ae532bcfa6d2ee5924666a29097d1be0cdb035 MANIFEST
+SHA1 9590276bdf7eaeb902c30eb08ea8b65596b739e6 META.yml
 SHA1 ae2d20440ed3844c495657e7b5d9b2179266955f Makefile.PL
 SHA1 da39a3ee5e6b4b0d3255bfef95601890afd80709 README
-SHA1 ef7d689cabe2c8ecf34762140bb754761b15da98 lib/Test/Class.pm
-SHA1 fc39ee8f2ba557de451c51d75961e80d135d2bfe lib/Test/Class.pod
+SHA1 e7f87fe2b3ef1718185aea4f98ac7887cd2ace00 lib/Test/Class.pm
+SHA1 f4ca1abfcbb1bfa3a259706ae0f17e8661320e2b lib/Test/Class.pod
 SHA1 a2533ae138e3a31cbd6b3ee3088a9da167fb9ae9 lib/Test/Class/MethodInfo.pm
+SHA1 1fcef98ffabcfd77d26946d3bb8ea351c0ec9e9a t/Tests.t
 SHA1 6163d4a98be9ed2feefb7526888c19ee6745d90e t/_new.t
 SHA1 9de7c32c8f173a99e71fb8e46ca6a772d731f165 t/bailout.t
 SHA1 3a8b48f4ff72d2941c3d329e21624c9094acd9b5 t/builder.t
@@ -40,6 +41,7 @@ SHA1 c1e4c4d2087eeb5a3b47ec3205c0ddcb76c045d5 t/methodinfo.t
 SHA1 67f6e350be93073976212ec6493f0441c2bc7225 t/named_test.t
 SHA1 37631bdd27bec3c1878f39f80b7ba8a863a4cde8 t/num_method_tests.t
 SHA1 46a9af7275edd58dfe8c6e66b58e7cba758c4e9f t/num_tests.t
+SHA1 4fcc5ee16068cd8baf4174b16bae4af5c70a17dd t/override.t
 SHA1 d14a0954ff73b0d493e04d3db4f011801860d49b t/pod.t
 SHA1 cc0de8d7f66f541302504e8d971932ff3654bdd1 t/run_all_tests.t
 SHA1 544563f8f4460f37f13776c385bd1d8bb2bb1892 t/runtests.t
@@ -55,13 +57,14 @@ SHA1 cea00e19fb5181d7e2976434d5cc4082c0808eec t/skip2.t
 SHA1 120058af41f616ebb5494543e8877db0f90ac305 t/skip_class_reason.t
 SHA1 06922a3ff6292867f4fcf28d5e333ec9f9502f26 t/spaces.t
 SHA1 4b9050b950e9bf431db42a749c977ff82b774b39 t/startup.t
+SHA1 fa9d75a59ad7c5a25c902bc83630709f92bc8685 t/startup_that_dies.t
 SHA1 ac2c72e82712934fe3bb51b2f8314d6d48636d07 t/test_classes.t
 SHA1 4c528832d492e9aa20bd0e2abcfd7297ba6d99eb t/test_verbose.t
 SHA1 15292fd0d83967deacea44c06f725854cebf60d3 t/todo.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.4 (Darwin)
 
-iD8DBQFCArCQaOJcDd+05vARAnMUAJ96lWxa9MenijsCJrJrclIP1kkhKgCcCpDn
-t1lFv0g9mXXUp+5HcwDpObw=
-=/w/G
+iD8DBQFCF5RbaOJcDd+05vARAuTFAJ0eQa1Saz7c6wJpNjuAnepRIW/HngCgkfWc
+Mz6CRpamNsjgLwDHV5KUm3o=
+=tcDT
 -----END PGP SIGNATURE-----
