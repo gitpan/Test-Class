@@ -18,7 +18,7 @@ sub new {
 	is($self->num_method_tests('two_tests'), 2, 'fixed num tests');
 	is($self->num_method_tests('no_plan_test'), 'no_plan', 'no_plan tests');
 	throws_ok {$self->num_method_tests('fribble')} qr/not a test method/, 'cannot use non-method';
-	throws_ok {$self->num_method_tests('no_plan_test', 'goobah')} qr/not a valid number/, 'cannot update illegal value';
+	throws_ok {$self->num_method_tests('no_plan_test', 'goobah')} qr/not valid number/, 'cannot update illegal value';
 	lives_ok {$self->num_method_tests('no_plan_test', 2)} 'updated legal value';
 	is($self->num_method_tests('no_plan_test'), 2, 'update worked');
 	lives_ok {$self->num_method_tests('no_plan_test2', '+2')} 'updated extended';
@@ -48,9 +48,7 @@ use Test::More tests => 19;
 use Test::Exception;
 
 my $tc = Bar->new;
-is(Bar->expected_tests, 'no_plan', 'class has no_plan tests');
-is($tc->expected_tests, 7, 'object has expected number of tests');
+is(Bar->expected_tests, 'no_plan', 'class expected_tests');
+is($tc->expected_tests, 7, 'object expected_tests');
 throws_ok {$tc->num_method_tests('two_tests')} qr/not called in a Test::Class/, 'num_method_tests dies outside test class';
 $tc->runtests;
-
-

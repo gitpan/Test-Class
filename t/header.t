@@ -13,10 +13,8 @@ sub test : Test {
 
 package main;
 use Test::More 'no_plan';
+$ENV{TEST_VERBOSE}=0;
 test_out("ok 1 - test in Test::Class");
 Local::Test->runtests;
-{
-	local $TODO = "todo";
-	test_test("no duplicate headers");
-};
+test_test("no duplicate headers");
 print "1..1\n";

@@ -13,8 +13,10 @@ package main;
 use Test::Builder::Tester tests => 1;
 
 $ENV{TEST_VERBOSE}=1;
+test_diag("");
 test_diag("Local::Test->test1");
 test_out("ok 1");
+test_diag("");
 test_diag("Local::Test->test2");
 test_out("ok 2");
 Local::Test->runtests;

@@ -35,7 +35,7 @@ test_err("#     Failed test (t/runtests_result.t at line 10)");
 test_out("ok 2 - passes");
 $all_ok = Fail->runtests;
 test_test("single failure ran okay");
-ok(! $all_ok, "failure detected");
+is($all_ok, 0, "failure detected");
 
 $all_ok = Pass->runtests;
 ok($all_ok, "success detected");

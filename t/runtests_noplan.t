@@ -31,6 +31,6 @@ $foo->{runtime_tests} = 2;
 
 $foo->runtests;
 
-my $expected = $foo->{runtime_tests} + Foo->total_num_tests("set_tests");
+my $expected = $foo->{runtime_tests} + 1;
 my $ran = $foo->builder->current_test;
 is($ran, $expected, "expected number of tests ran");

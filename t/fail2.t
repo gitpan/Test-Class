@@ -44,7 +44,7 @@ END {
 		ok($actual, $expected);
 	};
 
-	ok($?, 255);
+	ok($?, 3);
 	_exit(0); # need to stop Test::Builder's $? tweak
 };
 

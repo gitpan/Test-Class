@@ -15,7 +15,7 @@ Test::Class->FAIL_ALL("failing");
 
 END {
 	test_test("FAIL_ALL with no plan");
-	is($?, 255, "exit value okay");
+	is($?, 1, "exit value okay");
 	print "1..2\n";
 	$?=0;
 };

@@ -30,7 +30,7 @@ sub test_fields : Test {
 sub make_fixture : Test(setup) {
 	my $self = shift;
 	$self->{object} = Object->new();
-	$self->{dbh} = Mock::DBI->new(-type => normal);
+	$self->{dbh} = Mock::DBI->new(-type => 'normal');
 };
 
 sub test_open : Test {
@@ -71,11 +71,6 @@ sub test_fields : Test(+1) {
 	my $self = shift;
 	$self->SUPER::test_fields;
 	is($self->{object}->field2, 'bar', 'field2 access ok');
-};
-
-sub test_test_fields : Test {
-	my $self = shift;
-	is($self->total_num_tests('test_fields'), 2, 'total_num_tests');
 };
 
 sub test_invarient : Test(teardown => 1) {

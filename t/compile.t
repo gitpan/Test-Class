@@ -11,22 +11,19 @@ use Test::More tests => 2;
 my $stderr;
 
 BEGIN {
-
-$stderr = IO::File->new_tmpfile 
-					or die "could not create tmp file ($!)\n";
-*STDERR = $stderr;
-
+	$stderr = IO::File->new_tmpfile or die "no tmp file ($!)\n";
+	*STDERR = $stderr;
 };
 
-my $sub = sub : Test(1) {print "ok\n"};
 
+my $sub = sub : Test(1) {print "ok\n"};
 sub foo : Test(foo) {print "ok\n"};
 
+
 END {
-
-seek $stderr, SEEK_SET, 0;
-
-is(<$stderr>, "cannot test anonymous subs\n", "cannot test anon sub");
-is(<$stderr>, "bad test definition 'foo' in main->foo\n", "bad number detected");
-
+	seek $stderr, SEEK_SET, 0;
+	is(<$stderr>, "cannot test anonymous subs\n", 
+			"cannot test anon sub");
+	is(<$stderr>, "bad test definition 'foo' in main->foo\n",
+			"bad number detected");
 };

@@ -22,7 +22,7 @@ $ENV{TEST_VERBOSE}=0;
 test_out("not ok 1 - The object isa Object");
 test_err("#     Failed test (t/runtests_die.t at line 15)");
 test_err("#     The object isn't defined");
-test_out("not ok 2 - could not create object");
+test_out("not ok 2 - test_object died (could not create object)");
 test_err("#     Failed test (t/runtests_die.t at line 27)");
 Foo->runtests;
 test_test("early die handled");
