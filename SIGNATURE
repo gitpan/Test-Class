@@ -1,12 +1,12 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.41.
+signed via the Module::Signature module, version 0.42.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
 
     % cpansign -v
 
-It would check each file's integrity, as well as the signature's
+It will check each file's integrity, as well as the signature's
 validity.  If "==> Signature verified OK! <==" is not displayed,
 the distribution may already have been compromised, and you should
 not run its Makefile.PL or Build.PL.
@@ -15,16 +15,14 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 38c8725cdc2ba1f920dab7f77cec7a164691db09 Build.PL
-SHA1 599775897ed066b75736ac49eedf81f70d26530e Changes
-SHA1 966b8b3a0ebb2efcbb101f19564af5c162b2d00a MANIFEST
-SHA1 043ac4f5f6cd3445513190cae45e7df7746988db META.yml
+SHA1 842f3ead43471f3a3fb155e556b5ee89ff49c270 Changes
+SHA1 b910e1e62d0e381e5085828f84988b0c3a15ef40 MANIFEST
+SHA1 ca7389a0e59b1910f2beb9dcaae08554226ef1c1 META.yml
 SHA1 ae2d20440ed3844c495657e7b5d9b2179266955f Makefile.PL
 SHA1 da39a3ee5e6b4b0d3255bfef95601890afd80709 README
-SHA1 4bc11030b574f9f18865d98443d7bfe415ac4b16 lib/Test/Class.pm
-SHA1 5ea43c98389f662cf0895888fe2e406f39c3830e lib/Test/Class.pod
-SHA1 a4a21357259d733b9cc0b15a54a4b0ed80249bcf lib/Test/Class/BaseTest.pm
+SHA1 bdee538a304a017ff5e1599962fb2f3b26926e94 lib/Test/Class.pm
+SHA1 1f8bc876a81e62e6cf57454b0ddc4dd78340e72f lib/Test/Class.pod
 SHA1 a2533ae138e3a31cbd6b3ee3088a9da167fb9ae9 lib/Test/Class/MethodInfo.pm
-SHA1 28f6344d6d89305c4a353df1b31ea009e672436a lib/Test/Class/Tutorial.pod
 SHA1 6163d4a98be9ed2feefb7526888c19ee6745d90e t/_new.t
 SHA1 9de7c32c8f173a99e71fb8e46ca6a772d731f165 t/bailout.t
 SHA1 3a8b48f4ff72d2941c3d329e21624c9094acd9b5 t/builder.t
@@ -62,7 +60,7 @@ SHA1 15292fd0d83967deacea44c06f725854cebf60d3 t/todo.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.4 (Darwin)
 
-iD8DBQFBPI5kaOJcDd+05vARAo/iAKCdkVFESyeVQE6WxIUfJ8F4ThjBxQCglaZU
-uKnmdnqLm62pKBzfiCd3CCU=
-=efw2
+iD8DBQFB2bveaOJcDd+05vARAidXAJ4ge+55gfSejs4qMUnaDPW5PNkBSgCfZuxr
+0AIU7geswAdu1clP8uoRjWg=
+=Ej6w
 -----END PGP SIGNATURE-----

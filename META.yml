@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: Test-Class
-version: 0.06
+version: 0.07
 author: ~
 abstract: ~
 license: perl
@@ -19,10 +19,8 @@ build_requires:
 provides:
   Test::Class:
     file: lib/Test/Class.pm
-    version: 0.06
-  Test::Class::BaseTest:
-    file: lib/Test/Class/BaseTest.pm
+    version: 0.07
   Test::Class::MethodInfo:
     file: lib/Test/Class/MethodInfo.pm
     version: 0.01
-generated_by: Module::Build version 0.25_02
+generated_by: Module::Build version 0.2604

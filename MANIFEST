@@ -2,11 +2,9 @@ Build.PL
 Changes
 lib/Test/Class.pm
 lib/Test/Class.pod
-lib/Test/Class/BaseTest.pm
 lib/Test/Class/MethodInfo.pm
-lib/Test/Class/Tutorial.pod
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 META.yml
 README
 t/_new.t
