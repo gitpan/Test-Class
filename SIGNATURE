@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.38.
+signed via the Module::Signature module, version 0.41.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,26 +14,28 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 ba8bc9c836fac151832518b3e2e5d92348458263 Build.PL
-SHA1 ce2d63ed8896fd24473aea17dfae20c82e72afbe Changes
-SHA1 00ce8ab0ab8aa126190b4fbd531a45a36fb1a740 MANIFEST
-SHA1 5850f955538664931f0f06742acabd2672d5cc60 META.yml
-SHA1 ad12efbcc371c76f706dd8c8447b3bd3ea0481f2 Makefile.PL
-SHA1 ecac537c97af9d90cc62baad908c8524b255b500 README
-SHA1 eb897a9154d83d4ab3b07183de25f7d44b19bb0d lib/Test/Class.pm
-SHA1 5f19d1025393b4ebc09e9e739a322570a2e47258 lib/Test/Class.pod
+SHA1 38c8725cdc2ba1f920dab7f77cec7a164691db09 Build.PL
+SHA1 599775897ed066b75736ac49eedf81f70d26530e Changes
+SHA1 966b8b3a0ebb2efcbb101f19564af5c162b2d00a MANIFEST
+SHA1 043ac4f5f6cd3445513190cae45e7df7746988db META.yml
+SHA1 ae2d20440ed3844c495657e7b5d9b2179266955f Makefile.PL
+SHA1 da39a3ee5e6b4b0d3255bfef95601890afd80709 README
+SHA1 4bc11030b574f9f18865d98443d7bfe415ac4b16 lib/Test/Class.pm
+SHA1 5ea43c98389f662cf0895888fe2e406f39c3830e lib/Test/Class.pod
+SHA1 a4a21357259d733b9cc0b15a54a4b0ed80249bcf lib/Test/Class/BaseTest.pm
 SHA1 a2533ae138e3a31cbd6b3ee3088a9da167fb9ae9 lib/Test/Class/MethodInfo.pm
+SHA1 28f6344d6d89305c4a353df1b31ea009e672436a lib/Test/Class/Tutorial.pod
 SHA1 6163d4a98be9ed2feefb7526888c19ee6745d90e t/_new.t
 SHA1 9de7c32c8f173a99e71fb8e46ca6a772d731f165 t/bailout.t
 SHA1 3a8b48f4ff72d2941c3d329e21624c9094acd9b5 t/builder.t
 SHA1 da18b1e2a289f4ab07874d001d73ffe63a343ea5 t/compile.t
 SHA1 9ffae8e886ab66b88e00b23508e6311c04b3f821 t/current_method.t
-SHA1 26b60d5adcd2ef464b1b4fc5c94d7665d091e9fe t/die_before_plan.t
+SHA1 b9650c1e78625ae8a246d1d3471c6a42127c3233 t/die_before_plan.t
 SHA1 871e199ac6ddbf64f01da4bed04482c20915d4f4 t/documented.t
 SHA1 edcc59ab6ebf0ab60e8e76e029bb90be55737439 t/example.t
 SHA1 d102f9c842dbc396714f60c87435c8361b32ccbf t/expected_tests.t
 SHA1 7e6d58e83d5613f9e85e1da7ba1ec6e2bc78bf43 t/fail1.t
-SHA1 d5c8c4f578617af6d7c6df77db683fec6104a7b1 t/fail2.t
+SHA1 a8c5ec5f22de3650512c60a5ff03f86a5ca2d81f t/fail2.t
 SHA1 7d2ed911706a832cac3f47f9010f8d519d6d6349 t/fail3.t
 SHA1 71a89f965cd1b0e69cde71827178225840f98757 t/header.t
 SHA1 447f1187715300957ae6411395ce3e0dccb2101a t/late_header.t
@@ -60,7 +62,7 @@ SHA1 15292fd0d83967deacea44c06f725854cebf60d3 t/todo.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.4 (Darwin)
 
-iD8DBQFA1D6hItcXmLGUYSsRArMWAJ0QdiN1CnsO3HC34qWkiQBIe6M5pgCbBZkz
-VCvTuu38jefgN8196YMNGfE=
-=l3PU
+iD8DBQFBPI5kaOJcDd+05vARAo/iAKCdkVFESyeVQE6WxIUfJ8F4ThjBxQCglaZU
+uKnmdnqLm62pKBzfiCd3CCU=
+=efw2
 -----END PGP SIGNATURE-----

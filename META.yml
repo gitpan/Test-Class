@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: Test-Class
-version: 0.06_7
+version: 0.06
 author: ~
 abstract: ~
 license: perl
@@ -10,18 +10,19 @@ build_requires:
   Attribute::Handlers: 0.77
   Class::ISA: 0.32
   Devel::Symdump: 2.03
-  IO::File: 1.08
   Storable: 2.04
   Test::Builder: 0.16
-  Test::Builder::Tester: 0.09
+  Test::Builder::Tester: 1.01
   Test::Differences: 0.43
-  Test::Exception: 0.1
+  Test::Exception: 0.10
   Test::More: 0.44
 provides:
   Test::Class:
     file: lib/Test/Class.pm
-    version: 0.06_7
+    version: 0.06
+  Test::Class::BaseTest:
+    file: lib/Test/Class/BaseTest.pm
   Test::Class::MethodInfo:
     file: lib/Test/Class/MethodInfo.pm
     version: 0.01
-generated_by: Module::Build version 0.25
+generated_by: Module::Build version 0.25_02
