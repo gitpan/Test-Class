@@ -14,7 +14,7 @@ use Test::Builder;
 use Test::Class::MethodInfo;
 
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 
 use constant NO_PLAN	=> "no_plan";
@@ -129,7 +129,16 @@ sub _get_methods {
 			};
 		};
 	};
-	return(sort keys %methods);
+    if (exists $ENV{TEST_METHOD}) {
+        eval { '' =~ /\A$ENV{TEST_METHOD}\z/ };
+        if (my $error = $@) {
+            die "TEST_METHOD ($ENV{TEST_METHOD}) is not a valid regular expression: $error";
+        }
+        return grep { /\A$ENV{TEST_METHOD}\z/ } sort keys %methods;
+    }
+    else {
+        return(sort keys %methods);
+    }
 };
 
 sub _num_expected_tests {
@@ -586,7 +595,7 @@ Setup and teardown methods are run before and after every test. For example:
 
 You can use setup and teardown methods to create common objects used by all of your test methods (a test I<fixture>) and store them in your Test::Class object, treating it as a hash. For example:
 
-  sub pig : Test(setup);
+  sub pig : Test(setup) {
       my $self = shift;
       $self->{test_pig} = Pig->new;
   };
@@ -772,8 +781,8 @@ If a startup, setup, test, teardown or shutdown method dies then L<runtests()|/"
 
   sub test_object : Test(2) {
       my $object = Object->new;
-      isa_ok($object, "Object") or die("could not create object\n");
-      is($object->open, "open worked");
+      isa_ok( $object, "Object" ) or die "could not create object\n";
+      ok( $object->open, "open worked" );
   };
 
 will produce the following if the first test failed:
@@ -886,7 +895,6 @@ You can extend test methods by inheritance in the usual way. For example conside
       is($pig->age, 3, "age accessed");
   };
 
-
 Next consider C<NamedPig> a subclass of C<Pig> where you can give your pig a name.
 
 We want to make sure that all the tests for the C<Pig> object still work for C<NamedPig>. We can do this by subclassing C<Pig::Test> and overriding the C<testing_class> and C<new_args> methods.
@@ -919,6 +927,49 @@ Test::Class allows us to state explicitly that we are adding tests to an existin
 With the above definition you can add tests to C<check_fields> in C<Pig::Test> without affecting C<NamedPig::Test>.
 
 
+=head1 RUNNING INDIVIDUAL TESTS
+
+B<NOTE:> The exact mechanism for running individual tests is likely to change in 
+the future. 
+
+Sometimes you just want to run a single test.  Commenting out other tests or
+writing code to skip them can be a hassle, so you can specify the
+C<TEST_METHOD> environment variable.  The value is expected to be a valid
+regular expression and, if present, only runs tests whose names match the
+regular expression.  Setup and teardown tests will still be run.  One easy way
+of doing this is by specifying the environment variable I<before> the
+C<runtests> method is called.
+
+Running a test named C<customer_profile>:
+
+ #! /usr/bin/perl
+ use Example::Test;
+      
+ $ENV{TEST_METHOD} = 'customer_profile';
+ Test::Class->runtests;
+
+Running all tests with C<customer> in their name:
+
+ #! /usr/bin/perl
+ use Example::Test;
+      
+ $ENV{TEST_METHOD} = '.*customer.*';
+ Test::Class->runtests;
+
+If you specify an invalid regular expression, your tests will not be run:
+
+ #! /usr/bin/perl
+ use Example::Test;
+      
+ $ENV{TEST_METHOD} = 'C++';
+ Test::Class->runtests;
+
+And when you run it:
+
+ TEST_METHOD (C++) is not a valid regular expression: Search pattern \
+ not terminated at (eval 17) line 1.
+
+
 =head1 ORGANISING YOUR TEST CLASSES
 
 You can, of course, organise your test modules as you wish. My personal preferences is:
@@ -941,7 +992,6 @@ Place all test classes in F<t/lib>.
 =head2 Creating and running tests
 
 =over 4
-
 
 =item B<Test>
 
@@ -1066,7 +1116,7 @@ C<runtests> is used to run test classes. At its most basic doing:
 
   $test->runtests
   
-will run the test methods of the test object $test, unless C<<$test->SKIP_CLASS>> returns a true value. 
+will run the test methods of the test object $test, unless C<< $test->SKIP_CLASS >> returns a true value. 
 
 Unless you have already specified a test plan using Test::Builder (or Test::More, et al) C<runtests> will set the test plan just before the first method that runs a test is executed. 
 
@@ -1131,6 +1181,7 @@ You can also override SKIP_CLASS for a class hierarchy. For example, to prevent 
 =back
 
 =head2 Fetching and setting a method's test number
+
 
 =over 4
 
