@@ -1,3 +1,18 @@
+0.12 - or the "to avoid public mocking" release
+    -   Fixed the installation errors that everybody has been rightly 
+        complaining about for the last year:
+        -   Prerequisities in requires, not build_requires
+        -   Tests no longer rely on hard coded test output (thanks Mart’n 
+            Ferrari and Nicholas Clark for patches)
+        -   Require appropriate version of Test::Exception
+    -   Added link to del.icio.us perl+testing links in POD
+    -   Fixed some bad markup in the POD
+    -   Stuck distribution related tests under t/developer
+    -   Added Perl::Critic tests under t/developer
+    -   Added some documentation for Test::Class::MethodInfo since I was bored
+        with people asking what it was for (it's internal - don't use it)
+    -   Added a whole bunch of people to the acknowledgements section
+    
 0.11
     -   A belated thank you added to some folk who send in RT bugs and whose
         name I missed off the acknowledgements section
@@ -9,7 +24,7 @@
     -   Added COMMUNITY section to POD
 
 0.10
-    -   Really fixed the _test_classes by (doh!)
+    -   Really fixed the _test_classes bug (doh!)
     -   Added :Tests attribute that acts like :Test but defaults to 'no_plan'
         if no test number is given.
 

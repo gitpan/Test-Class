@@ -2,20 +2,22 @@
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-          'PL_FILES' => {},
-          'INSTALLDIRS' => 'site',
           'NAME' => 'Test::Class',
           'VERSION_FROM' => 'lib/Test/Class.pm',
           'PREREQ_PM' => {
-                           'Test::Exception' => '0.10',
                            'Attribute::Handlers' => '0.77',
-                           'Storable' => '2.04',
+                           'Class::ISA' => '0.32',
+                           'Cwd' => '3.19',
                            'Devel::Symdump' => '2.03',
-                           'Test::Builder::Tester' => '1.01',
-                           'Test::More' => '0.44',
-                           'Test::Differences' => '0.43',
-                           'Test::Builder' => '0.16',
-                           'Class::ISA' => '0.32'
-                         }
+                           'IO::File' => '1.14',
+                           'Storable' => '2.04',
+                           'Test::Builder' => '0.33',
+                           'Test::Builder::Tester' => '1.04',
+                           'Test::Exception' => '0.15',
+                           'Test::More' => '0.44'
+                         },
+          'INSTALLDIRS' => 'site',
+          'EXE_FILES' => [],
+          'PL_FILES' => {}
         )
 ;

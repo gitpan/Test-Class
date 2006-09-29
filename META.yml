@@ -1,26 +1,32 @@
---- #YAML:1.0
+---
 name: Test-Class
-version: 0.11
-author: ~
-abstract: ~
+version: 0.12
+author:
+  - 'Adrian Howard <adrianh@quietstars.com>'
+abstract: Easily create test classes in an xUnit/JUnit style
 license: perl
+resources:
+  license: http://dev.perl.org/licenses/
 requires:
-  perl: 5.6.1
-build_requires:
   Attribute::Handlers: 0.77
   Class::ISA: 0.32
+  Cwd: 3.19
   Devel::Symdump: 2.03
+  IO::File: 1.14
   Storable: 2.04
-  Test::Builder: 0.16
-  Test::Builder::Tester: 1.01
-  Test::Differences: 0.43
-  Test::Exception: 0.10
+  Test::Builder: 0.33
+  Test::Builder::Tester: 1.04
+  Test::Exception: 0.15
   Test::More: 0.44
+  perl: 5.6.1
 provides:
   Test::Class:
     file: lib/Test/Class.pm
-    version: 0.11
+    version: 0.12
   Test::Class::MethodInfo:
     file: lib/Test/Class/MethodInfo.pm
-    version: 0.01
-generated_by: Module::Build version 0.2604
+    version: 0.02
+generated_by: Module::Build version 0.2805
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2

@@ -1,19 +1,20 @@
 Build.PL
 Changes
 lib/Test/Class.pm
-lib/Test/Class.pod
 lib/Test/Class/MethodInfo.pm
 Makefile.PL
 MANIFEST			This list of files
-META.yml
 README
 t/_new.t
 t/bailout.t
 t/builder.t
 t/compile.t
 t/current_method.t
+t/developer/documented.t
+t/developer/perlcritic.t
+t/developer/perlcriticrc
+t/developer/pod.t
 t/die_before_plan.t
-t/documented.t
 t/expected_tests.t
 t/fail1.t
 t/fail2.t
@@ -25,7 +26,6 @@ t/named_test.t
 t/num_method_tests.t
 t/num_tests.t
 t/override.t
-t/pod.t
 t/run_all_tests.t
 t/runtests.t
 t/runtests_die.t
@@ -45,4 +45,4 @@ t/test_classes.t
 t/test_verbose.t
 t/Tests.t
 t/todo.t
-SIGNATURE    Added here by Module::Build
+META.yml
