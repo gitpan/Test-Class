@@ -7,7 +7,6 @@ WriteMakefile
           'PREREQ_PM' => {
                            'Attribute::Handlers' => '0.77',
                            'Class::ISA' => '0.32',
-                           'Cwd' => '3.19',
                            'Devel::Symdump' => '2.03',
                            'IO::File' => '1.14',
                            'Storable' => '2.04',
