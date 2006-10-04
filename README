@@ -1219,7 +1219,15 @@ SEE ALSO
 
     *   File::Random
 
+    *   Geography::JapanesePrefectures
+
+    *   Geography::JapanesePrefectures::Walker
+
+    *   Google::Adwords
+
     *   Merge::HashRef
+
+    *   PerlBuildSystem
 
     *   Pixie
 

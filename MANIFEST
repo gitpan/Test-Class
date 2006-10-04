@@ -48,6 +48,7 @@ t/spaces.t
 t/startup.t
 t/startup_that_dies.t
 t/test_classes.t
+t/test_deep.t
 t/test_method.t
 t/test_verbose.t
 t/Tests.t
