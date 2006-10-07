@@ -14,7 +14,7 @@ use Test::Builder;
 use Test::Class::MethodInfo;
 
 
-our $VERSION = '0.16';
+our $VERSION = '0.17';
 
 
 use constant NO_PLAN	=> "no_plan";
@@ -163,7 +163,7 @@ sub _num_expected_tests {
 sub expected_tests {
 	my $total = 0;
 	foreach my $test (@_) {
-		if (UNIVERSAL::isa($test, __PACKAGE__)) {
+		if ( eval { $test->isa( __PACKAGE__ ) } ) {
 			my $n = _num_expected_tests($test);
 			return(NO_PLAN) if $n eq NO_PLAN;
 			$total += $n;
@@ -220,13 +220,13 @@ sub _run_method {
 	{
 	    no warnings;
         *Test::Builder::ok = sub {
-            my ($builder, $test, $name) = @_;
+            my ($builder, $test, $description) = @_;
             local $Test::Builder::Level = $Test::Builder::Level+1;
-            unless ( defined($name) ) {
-                $name = $self->current_method;
-                $name =~ tr/_/ /;
+            unless ( defined($description) ) {
+                $description = $self->current_method;
+                $description =~ tr/_/ /;
             };
-            $original_ok->($builder, $test, $name)
+            $original_ok->($builder, $test, $description)
         };
 	};
 	my $num_start = $Builder->current_test;
@@ -290,7 +290,7 @@ sub runtests {
 		# SHOULD ALSO ALLOW NO_PLAN
 		next if $t =~ m/^\d+$/;
 		croak "$t not Test::Class or integer"
-				unless UNIVERSAL::isa($t, __PACKAGE__);
+				unless eval { $t->isa( __PACKAGE__ ) };
         if (my $reason = $t->SKIP_CLASS) {
             _show_header($t, @tests) unless $Builder->has_plan ;
             $Builder->skip( $reason ) unless $reason eq "1";
@@ -715,13 +715,13 @@ I<Remember:> Test objects are just normal perl objects. Test classes are just no
 In particular you can override the new() method to pass parameters to your test object, or re-define the number of tests a method will run. See L<num_method_tests()|/"num_method_tests"> for an example. 
 
 
-=head1 TEST NAMES
+=head1 TEST DESCRIPTIONS
 
-The test functions you import from L<Test::More> and other L<Test::Builder> based modules usually take an optional third argument that specifies the test name, for example:
+The test functions you import from L<Test::More> and other L<Test::Builder> based modules usually take an optional third argument that specifies the test description, for example:
 
-  is $something, $something_else, 'name of test';
+  is $something, $something_else, 'a description of my test';
     
-If you do not supply a test name, and the test function does not supply its own default value, then Test::Class will use the name of the currently running test method, replacing all "_" characters with spaces so:
+If you do not supply a test description, and the test function does not supply its own default, then Test::Class will use the name of the currently running test method, replacing all "_" characters with spaces so:
 
   sub one_plus_one_is_two : Test {
       is 1+1, 2;
@@ -1536,6 +1536,22 @@ If you use this module, and can spare the time please drop me an e-mail or rate 
 
 Simple way to load "Test::Class" classes automatically.
 
+=item L<http://del.icio.us/tag/Test::Class>
+
+Delicious links on Test::Class.
+
+=item Perl Testing: A Developer's Notebook by Ian Langworth and chromatic
+
+Chapter 8 covers using Test::Class.
+
+=item Advanced Perl Programming, second edition by Simon Cozens
+
+Chapter 8 has a few pages on using Test::Class.
+
+=item The Perl Journal, April 2003
+
+Includes the article "Test-Driven Development in Perl" by Piers Cawley that uses Test::Class.
+
 =item L<Test::Builder>
 
 Support module for building test libraries.
@@ -1548,13 +1564,17 @@ Basic utilities for writing tests.
 
 Overview of some of the many testing modules available on CPAN.
 
-=item L<http://del.icio.us/tag/Test::Class>
-
-Delicious links on Test::Class.
-
 =item L<http://del.icio.us/tag/perl+testing>
 
 Delicious links on perl testing.
+
+=item L<Test::Object>
+
+Another approach to object oriented testing.
+
+=item L<Test::Group> and L<Test::Block>
+
+Alternatives to grouping sets of tests together.
 
 =back
 
@@ -1562,7 +1582,7 @@ The following modules use Test::Class as part of their test suite. You might wan
 
 =over 4
 
-L<Aspect>, L<Bundle::Bricolage> (L<http://www.bricolage.cc/>), L<Class::StorageFactory>, L<CGI::Application::Search>, L<DBIx::Romani>, L<Xmldoom>, L<Object::Relational>, L<File::Random>, L<Geography::JapanesePrefectures>, L<Geography::JapanesePrefectures::Walker>, L<Google::Adwords>, L<Merge::HashRef>, L<PerlBuildSystem>, L<Pixie>, L<Yahoo::Marketing>, and L<XUL-Node>
+L<Aspect>, Bricolage (L<http://www.bricolage.cc/>), L<Class::StorageFactory>, L<CGI::Application::Search>, L<DBIx::Romani>, L<Xmldoom>, L<Object::Relational>, L<File::Random>, L<Geography::JapanesePrefectures>, L<Google::Adwords>, L<Merge::HashRef>, L<PerlBuildSystem>, L<Pixie>, L<Yahoo::Marketing>, and L<XUL-Node>
 
 =back
 

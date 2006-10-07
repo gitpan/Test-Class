@@ -349,15 +349,15 @@ RUNNING TESTS
     your test object, or re-define the number of tests a method will run.
     See num_method_tests() for an example.
 
-TEST NAMES
+TEST DESCRIPTIONS
     The test functions you import from Test::More and other Test::Builder
     based modules usually take an optional third argument that specifies the
-    test name, for example:
+    test description, for example:
 
-      is $something, $something_else, 'name of test';
+      is $something, $something_else, 'a description of my test';
 
-    If you do not supply a test name, and the test function does not supply
-    its own default value, then Test::Class will use the name of the
+    If you do not supply a test description, and the test function does not
+    supply its own default, then Test::Class will use the name of the
     currently running test method, replacing all "_" characters with spaces
     so:
 
@@ -1204,6 +1204,19 @@ SEE ALSO
     Test::Class::Load
         Simple way to load "Test::Class" classes automatically.
 
+    <http://del.icio.us/tag/Test::Class>
+        Delicious links on Test::Class.
+
+    Perl Testing: A Developer's Notebook by Ian Langworth and chromatic
+        Chapter 8 covers using Test::Class.
+
+    Advanced Perl Programming, second edition by Simon Cozens
+        Chapter 8 has a few pages on using Test::Class.
+
+    The Perl Journal, April 2003
+        Includes the article "Test-Driven Development in Perl" by Piers
+        Cawley that uses Test::Class.
+
     Test::Builder
         Support module for building test libraries.
 
@@ -1213,22 +1226,23 @@ SEE ALSO
     <http://qa.perl.org/test-modules.html>
         Overview of some of the many testing modules available on CPAN.
 
-    <http://del.icio.us/tag/Test::Class>
-        Delicious links on Test::Class.
-
     <http://del.icio.us/tag/perl+testing>
         Delicious links on perl testing.
+
+    Test::Object
+        Another approach to object oriented testing.
+
+    Test::Group and Test::Block
+        Alternatives to grouping sets of tests together.
 
     The following modules use Test::Class as part of their test suite. You
     might want to look at them for usage examples:
 
-        Aspect, Bundle::Bricolage (<http://www.bricolage.cc/>),
+        Aspect, Bricolage (<http://www.bricolage.cc/>),
         Class::StorageFactory, CGI::Application::Search, DBIx::Romani,
         Xmldoom, Object::Relational, File::Random,
-        Geography::JapanesePrefectures,
-        Geography::JapanesePrefectures::Walker, Google::Adwords,
-        Merge::HashRef, PerlBuildSystem, Pixie, Yahoo::Marketing, and
-        XUL-Node
+        Geography::JapanesePrefectures, Google::Adwords, Merge::HashRef,
+        PerlBuildSystem, Pixie, Yahoo::Marketing, and XUL-Node
 
     The following modules are not based on Test::Builder, but may be of
     interest as alternatives to Test::Class.
