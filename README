@@ -627,6 +627,23 @@ ORGANISING YOUR TEST CLASSES
     The Test::Class::Load provides a simple mechanism for easily loading all
     of the test classes in a given set of directories.
 
+A NOTE ON LOADING TEST CLASSES
+    Due to its use of subroutine attributes Test::Class based modules must
+    be loaded at compile rather than run time. This is because the :Test
+    attribute is applied by a CHECK block.
+
+    This can be problematic if you want to dynamically load Test::Class
+    modules. Basically while:
+
+      require $some_test_class;
+
+    won't work, doing:
+
+      BEGIN { require $some_test_class };
+
+    will work just fine. For more information on CHECK blocks see "BEGIN,
+    CHECK, INIT and END" in perlmod.
+
 METHODS
   Creating and running tests
     Test

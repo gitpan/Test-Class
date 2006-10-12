@@ -34,6 +34,7 @@ t/num_method_tests.t
 t/num_tests.t
 t/override.t
 t/rt15870.t
+t/rt17264.t
 t/run_all_tests.t
 t/runtests.t
 t/runtests_die.t

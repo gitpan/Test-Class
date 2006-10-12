@@ -1,6 +1,6 @@
 ---
 name: Test-Class
-version: 0.18
+version: 0.19
 author:
   - 'Adrian Howard <adrianh@quietstars.com>'
 abstract: Easily create test classes in an xUnit/JUnit style
@@ -21,7 +21,7 @@ requires:
 provides:
   Test::Class:
     file: lib/Test/Class.pm
-    version: 0.18
+    version: 0.19
   Test::Class::Load:
     file: lib/Test/Class/Load.pm
     version: 0.01
