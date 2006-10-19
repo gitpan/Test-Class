@@ -19,6 +19,7 @@ t/developer/perlcritic.t
 t/developer/perlcriticrc
 t/developer/pod.t
 t/developer/spelling.t
+t/diag_on_failure.t
 t/die_before_plan.t
 t/expected_tests.t
 t/fail1.t
