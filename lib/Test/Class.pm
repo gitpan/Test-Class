@@ -13,7 +13,7 @@ use Test::Builder;
 use Test::Class::MethodInfo;
 
 
-our $VERSION = '0.20';
+our $VERSION = '0.21';
 
 my $Check_block_has_run;
 {
@@ -172,17 +172,16 @@ sub expected_tests {
 	foreach my $test (@_) {
 		if ( eval { $test->isa( __PACKAGE__ ) } ) {
 			my $n = _num_expected_tests($test);
-			return(NO_PLAN) if $n eq NO_PLAN;
+			return NO_PLAN if $n eq NO_PLAN;
 			$total += $n;
-		} elsif ($test =~ m/^\d+$/) {
-			# SHOULD ALSO ALLOW NO_PLAN
+		} elsif ( defined $test && $test =~ m/^\d+$/ ) {
 			$total += $test;
 		} else {
-			$test = 'undef' unless defined($test);
+			$test = 'undef' unless defined $test;
 			croak "$test is not a Test::Class or an integer";
 		};
 	};
-	return($total);
+	return $total;
 };
 
 sub _total_num_tests {
@@ -223,26 +222,25 @@ sub _exception_failure {
 
 sub _run_method {
 	my ($self, $method, $tests) = @_;
-	my $original_ok = \&Test::Builder::ok;
-	{
-	    no warnings;
-        *Test::Builder::ok = sub {
-            my ($builder, $test, $description) = @_;
-            local $Test::Builder::Level = $Test::Builder::Level+1;
-            unless ( defined($description) ) {
-                $description = $self->current_method;
-                $description =~ tr/_/ /;
-            };
-            my $is_ok = $original_ok->($builder, $test, $description);
-            unless ( $is_ok ) {
-                my $class = ref $self;
-                $Builder->diag( "  (in $class->$method)" );
-            };
-            return $is_ok;
-        };
-	};
 	my $num_start = $Builder->current_test;
-	my $skip_reason = eval {$self->$method};
+    my $skip_reason;
+    my $original_ok = \&Test::Builder::ok;
+    no warnings;
+    local *Test::Builder::ok = sub {
+        my ($builder, $test, $description) = @_;
+        local $Test::Builder::Level = $Test::Builder::Level+1;
+        unless ( defined($description) ) {
+            $description = $self->current_method;
+            $description =~ tr/_/ /;
+        };
+        my $is_ok = $original_ok->($builder, $test, $description);
+        unless ( $is_ok ) {
+            my $class = ref $self;
+            $Builder->diag( "  (in $class->$method)" );
+        };
+        return $is_ok;
+    };
+    $skip_reason = eval {$self->$method};
 	my $exception = $@;
 	chomp($exception) if $exception;
 	my $num_done = $Builder->current_test - $num_start;
