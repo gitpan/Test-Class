@@ -1,6 +1,6 @@
 ---
 name: Test-Class
-version: 0.22
+version: 0.23
 author:
   - 'Adrian Howard <adrianh@quietstars.com>'
 abstract: Easily create test classes in an xUnit/JUnit style
@@ -17,18 +17,19 @@ requires:
   Test::Builder::Tester: 1.04
   Test::Exception: 0.15
   Test::More: 0.44
+  Test::Simple: 0.62
   perl: 5.6.1
 provides:
   Test::Class:
     file: lib/Test/Class.pm
-    version: 0.22
+    version: 0.23
   Test::Class::Load:
     file: lib/Test/Class/Load.pm
     version: 0.02
   Test::Class::MethodInfo:
     file: lib/Test/Class/MethodInfo.pm
     version: 0.02
-generated_by: Module::Build version 0.2805
+generated_by: Module::Build version 0.2806
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2

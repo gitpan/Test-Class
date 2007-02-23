@@ -13,7 +13,7 @@ use Test::Builder;
 use Test::Class::MethodInfo;
 
 
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 
 my $Check_block_has_run;
 {
@@ -1523,6 +1523,7 @@ Chris Williams,
 Corion, 
 Daniel Berger,
 Dave O'Neill,
+David Cantrell,
 David Wheeler,
 Emil Jansson, 
 Hai Pham,
@@ -1541,6 +1542,7 @@ Mark Stosberg,
 Martin Ferrari,
 Mathieu Sauve-Frankel,
 Matt Trout,
+Matt Williamson,
 Michael G Schwern, 
 Murat Uenalan, 
 Nicholas Clark,
@@ -1641,6 +1643,6 @@ A very simple unit testing framework.
 
 =head1 LICENCE
 
-Copyright 2002-2006 Adrian Howard, All Rights Reserved.
+Copyright 2002-2007 Adrian Howard, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.

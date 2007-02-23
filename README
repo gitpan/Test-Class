@@ -1199,16 +1199,16 @@ ACKNOWLEDGMENTS
     Framework paper <http://www.xprogramming.com/testfram.htm>.
 
     Thanks to Adam Kennedy, Apocalypse, Ask Bjorn Hansen, Chris Williams,
-    Corion, Daniel Berger, Dave O'Neill, David Wheeler, Emil Jansson, Hai
-    Pham, imacat, Jeff Deifik, Jochen Stenzel, Johan Lindstrom, John West,
-    Jonathan R. Warden, Joshua ben Jore, Jost Krieger, Kenichi Ishigaki Lee
-    Goddard, Mark Reynolds, Mark Stosberg, Martin Ferrari, Mathieu
-    Sauve-Frankel, Matt Trout, Michael G Schwern, Murat Uenalan, Nicholas
-    Clark, Ovid, Piers Cawley, Rob Kinyon, Scott Lanning, Sebastien
-    Aperghis-Tramoni, Steve Kirkup, Stray Toaster, Ted Carnahan, Terrence
-    Brannon, Tom Metro, Tony Bowden, William McKee, various anonymous folk
-    and all the fine people on perl-qa for their feedback, patches,
-    suggestions and nagging.
+    Corion, Daniel Berger, Dave O'Neill, David Cantrell, David Wheeler, Emil
+    Jansson, Hai Pham, imacat, Jeff Deifik, Jochen Stenzel, Johan Lindstrom,
+    John West, Jonathan R. Warden, Joshua ben Jore, Jost Krieger, Kenichi
+    Ishigaki Lee Goddard, Mark Reynolds, Mark Stosberg, Martin Ferrari,
+    Mathieu Sauve-Frankel, Matt Trout, Matt Williamson, Michael G Schwern,
+    Murat Uenalan, Nicholas Clark, Ovid, Piers Cawley, Rob Kinyon, Scott
+    Lanning, Sebastien Aperghis-Tramoni, Steve Kirkup, Stray Toaster, Ted
+    Carnahan, Terrence Brannon, Tom Metro, Tony Bowden, William McKee,
+    various anonymous folk and all the fine people on perl-qa for their
+    feedback, patches, suggestions and nagging.
 
     This module wouldn't be possible without the excellent Test::Builder.
     Thanks to chromatic and Michael G Schwern for creating such a useful
@@ -1275,7 +1275,7 @@ SEE ALSO
         A very simple unit testing framework.
 
 LICENCE
-    Copyright 2002-2006 Adrian Howard, All Rights Reserved.
+    Copyright 2002-2007 Adrian Howard, All Rights Reserved.
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
