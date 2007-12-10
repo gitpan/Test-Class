@@ -1,6 +1,6 @@
 ---
 name: Test-Class
-version: 0.25
+version: 0.26
 author:
   - 'Adrian Howard <adrianh@quietstars.com>'
 abstract: Easily create test classes in an xUnit/JUnit style
@@ -13,16 +13,16 @@ requires:
   Devel::Symdump: 2.03
   IO::File: 1.14
   Storable: 2.04
-  Test::Builder: 0.33
-  Test::Builder::Tester: 1.04
-  Test::Exception: 0.15
-  Test::More: 0.44
-  Test::Simple: 0.62
+  Test::Builder: 0.7
+  Test::Builder::Tester: 1.07
+  Test::Exception: 0.25
+  Test::More: 0.7
+  Test::Simple: 0.7
   perl: 5.6.1
 provides:
   Test::Class:
     file: lib/Test/Class.pm
-    version: 0.25
+    version: 0.26
   Test::Class::Load:
     file: lib/Test/Class/Load.pm
     version: 0.02
