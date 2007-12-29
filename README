@@ -75,8 +75,8 @@ INTRODUCTION
     Later Kent Beck and Erich Gamma created JUnit for testing Java
     <http://www.junit.org/>. It was popular too.
 
-    Now there xUnit frameworks for every language from Ada to XSLT. You can
-    find a list at <http://www.xprogramming.com/software.htm>.
+    Now there are xUnit frameworks for every language from Ada to XSLT. You
+    can find a list at <http://www.xprogramming.com/software.htm>.
 
     While xUnit frameworks are traditionally associated with unit testing
     they are also useful in the creation of functional/acceptance tests.
@@ -248,10 +248,10 @@ METHOD TYPES
       };
 
     Just like setup and teardown methods you can pass an optional number of
-    tests to startup and shutdown methods:
+    tests to startup and shutdown methods. For example:
 
-      sub example : Test(setup => 1) {
-          ok(1, 'a setup method with one test');
+      sub example : Test(startup => 1) {
+          ok(1, 'a startup method with one test');
       };
 
     If a startup method has a failing test or throws an exception then all
