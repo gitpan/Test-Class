@@ -9,13 +9,13 @@ WriteMakefile
                            'Attribute::Handlers' => '0.77',
                            'Class::ISA' => '0.32',
                            'Devel::Symdump' => '2.03',
-                           'IO::File' => '1.14',
+                           'IO::File' => '1.13',
                            'Storable' => '2.04',
-                           'Test::Builder' => '0.7',
-                           'Test::Builder::Tester' => '1.07',
+                           'Test::Builder' => '0.32',
+                           'Test::Builder::Tester' => '1.02',
                            'Test::Exception' => '0.25',
-                           'Test::More' => '0.7',
-                           'Test::Simple' => '0.7'
+                           'Test::More' => '0.62',
+                           'Test::Simple' => '0.62'
                          },
           'INSTALLDIRS' => 'site',
           'EXE_FILES' => [],
