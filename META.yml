@@ -1,6 +1,6 @@
 ---
 name: Test-Class
-version: 0.28
+version: 0.29
 author:
   - 'Adrian Howard <adrianh@quietstars.com>'
 abstract: Easily create test classes in an xUnit/JUnit style
@@ -18,14 +18,14 @@ requires:
   Test::Exception: 0.25
   Test::More: 0.62
   Test::Simple: 0.62
-  perl: 5.6.1
+  perl: 5.006001
 provides:
   Test::Class:
     file: lib/Test/Class.pm
-    version: 0.28
+    version: 0.29
   Test::Class::Load:
     file: lib/Test/Class/Load.pm
-    version: 0.02
+    version: 0.03
   Test::Class::MethodInfo:
     file: lib/Test/Class/MethodInfo.pm
     version: 0.02

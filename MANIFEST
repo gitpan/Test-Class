@@ -9,6 +9,7 @@ META.yml
 README
 t/00-load.t
 t/20-load-classes.t
+t/21-load-subclassed.t
 t/_new.t
 t/bad-autoloads.t
 t/bailout.t
@@ -44,6 +45,8 @@ t/runtests_of.t
 t/runtests_result.t
 t/runtests_return.t
 t/runtests_trailing.t
+t/runtests_with_wrong_class.t
+t/show_plan_in_shutdown.t
 t/skip1.t
 t/skip2.t
 t/skip_class_reason.t
@@ -54,9 +57,15 @@ t/test-libs/fail/MyFail.pm
 t/test-libs/lib1/Tests/Foo.pm
 t/test-libs/lib1/Tests/Foo/Bar.pm
 t/test-libs/lib2/MyTest/Baz.pm
+t/test-libs/lib3/Tests/Bad1.pm
+t/test-libs/lib3/Tests/Good1.pm
+t/test-libs/lib3/Tests/Good2.pm
+t/test-libs/lib3/Tests/Subdir/Bad2.pm
+t/test-libs/lib3/Tests/Subdir/Good3.pm
 t/test_classes.t
 t/test_deep.t
 t/test_method.t
 t/test_verbose.t
+t/TestClassLoadSubclass.pm
 t/Tests.t
 t/todo.t
