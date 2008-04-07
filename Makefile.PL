@@ -11,11 +11,11 @@ WriteMakefile
                            'Devel::Symdump' => '2.03',
                            'IO::File' => '1.13',
                            'Storable' => '2.04',
-                           'Test::Builder' => '0.32',
+                           'Test::Builder' => '0.78',
                            'Test::Builder::Tester' => '1.02',
                            'Test::Exception' => '0.25',
-                           'Test::More' => '0.62',
-                           'Test::Simple' => '0.62'
+                           'Test::More' => '0.78',
+                           'Test::Simple' => '0.78'
                          },
           'INSTALLDIRS' => 'site',
           'EXE_FILES' => [],
