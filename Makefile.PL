@@ -9,7 +9,7 @@ WriteMakefile
                            'Attribute::Handlers' => '0.77',
                            'Class::ISA' => '0.32',
                            'Devel::Symdump' => '2.03',
-                           'IO::File' => '1.13',
+                           'IO::File' => '1.09',
                            'Storable' => '2.04',
                            'Test::Builder' => '0.78',
                            'Test::Builder::Tester' => '1.02',
