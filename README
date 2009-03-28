@@ -650,6 +650,16 @@ A NOTE ON LOADING TEST CLASSES
     will work just fine. For more information on CHECK blocks see "BEGIN,
     CHECK, INIT and END" in perlmod.
 
+    If you still can't arrange for your classes to be loaded at runtime, you
+    could use an alternative mechanism for adding your tests:
+
+      # sub test_something : Test(3) {...}
+      # becomes
+      sub test_something {...}
+      __PACKAGE__->add_testinfo('test_something', test => 3);
+
+    See the add_testinfo method for more details.
+
 METHODS
   Creating and running tests
     Test
@@ -1047,6 +1057,18 @@ METHODS
               my $self = shift;
               $self->SKIP_ALL("darwin only") unless $^O eq "darwin";    
           };
+
+    add_testinfo
+          CLASS->add_test($name, $type, $num_tests)
+
+        Chiefly for use by libraries like Test::Class::Sugar, which can't
+        use the ":Test(...)" interfaces make test methods. "add_testinfo"
+        informs the class about a test method that has been defined without
+        a "Test", "Tests" or other attribute.
+
+        $name is the name of the method, $type must be one of "startup",
+        "setup", "test", "teardown" or "shutdown", and $num_tests has the
+        same meaning as "N" in the description of the Test attribute.
 
 HELP FOR CONFUSED JUNIT USERS
     This section is for people who have used JUnit (or similar) and are
