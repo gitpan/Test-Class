@@ -3,13 +3,15 @@ Changes
 lib/Test/Class.pm
 lib/Test/Class/Load.pm
 lib/Test/Class/MethodInfo.pm
-Makefile.PL
+LICENSE
 MANIFEST			This list of files
-META.yml
 README
 t/00-load.t
 t/20-load-classes.t
 t/21-load-subclassed.t
+t/97_meta.t
+t/98_pod.t
+t/99_pmv.t
 t/_new.t
 t/bad-autoloads.t
 t/bailout.t
@@ -69,3 +71,5 @@ t/test_verbose.t
 t/TestClassLoadSubclass.pm
 t/Tests.t
 t/todo.t
+Makefile.PL
+META.yml

@@ -12,7 +12,7 @@ use Storable qw(dclone);
 use Test::Builder;
 use Test::Class::MethodInfo;
 
-our $VERSION = '0.32_1';
+our $VERSION = '0.33';
 
 my $Check_block_has_run;
 {
@@ -1678,6 +1678,6 @@ A very simple unit testing framework.
 
 =head1 LICENCE
 
-Copyright 2002-2007 Adrian Howard, All Rights Reserved.
+Copyright 2002-2009 Adrian Howard, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
