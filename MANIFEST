@@ -9,9 +9,6 @@ README
 t/00-load.t
 t/20-load-classes.t
 t/21-load-subclassed.t
-t/97_meta.t
-t/98_pod.t
-t/99_pmv.t
 t/_new.t
 t/bad-autoloads.t
 t/bailout.t
@@ -71,5 +68,8 @@ t/test_verbose.t
 t/TestClassLoadSubclass.pm
 t/Tests.t
 t/todo.t
+xt/meta.t
+xt/pmv.t
+xt/pod.t
 Makefile.PL
 META.yml

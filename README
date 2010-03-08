@@ -38,8 +38,8 @@ SYNOPSIS
 
       #! /usr/bin/perl
       use Example::Test;
-      
-  # run all the test methods in Example::Test
+
+      # run all the test methods in Example::Test
       Test::Class->runtests;
 
     Outputs:
@@ -57,11 +57,11 @@ DESCRIPTION
     Test::Class provides a simple way of creating classes and objects to
     test your code in an xUnit style.
 
-    Built using Test::Builder it is designing to work with other
+    Built using Test::Builder, it was designed to work with other
     Test::Builder based modules (Test::More, Test::Differences,
-    Test::Exception, etc.)
+    Test::Exception, etc.).
 
-    *Note:* This module will make more sense if you are already familiar
+    *Note:* This module will make more sense, if you are already familiar
     with the "standard" mechanisms for testing perl code. Those unfamiliar
     with Test::Harness, Test::Simple, Test::More and friends should go take
     a look at them now. Test::Tutorial is a good starting point.
@@ -82,7 +82,7 @@ INTRODUCTION
     they are also useful in the creation of functional/acceptance tests.
 
     Test::Class is (yet another) implementation of xUnit style testing in
-    perl.
+    Perl.
 
   Why you should use Test::Class
     Test::Class attempts to provide simple xUnit testing that integrates
@@ -242,8 +242,8 @@ METHOD TYPES
       sub db_connect : Test(startup) {
           shift->{dbi} = DBI->connect;
       };
-      
-  sub db_disconnect : Test(shutdown) {
+
+      sub db_disconnect : Test(shutdown) {
           shift->{dbi}->disconnect;
       };
 
@@ -1300,7 +1300,7 @@ SEE ALSO
         A very simple unit testing framework.
 
 LICENCE
-    Copyright 2002-2009 Adrian Howard, All Rights Reserved.
+    Copyright 2002-2010 Adrian Howard, All Rights Reserved.
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
