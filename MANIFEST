@@ -4,7 +4,9 @@ lib/Test/Class.pm
 lib/Test/Class/Load.pm
 lib/Test/Class/MethodInfo.pm
 LICENSE
+Makefile.PL
 MANIFEST			This list of files
+META.yml
 README
 t/00-load.t
 t/20-load-classes.t
@@ -15,11 +17,6 @@ t/bailout.t
 t/builder.t
 t/compile.t
 t/current_method.t
-t/developer/documented.t
-t/developer/perlcritic.t
-t/developer/perlcriticrc
-t/developer/pod.t
-t/developer/spelling.t
 t/diag_on_failure.t
 t/die_before_plan.t
 t/expected_tests.t
@@ -68,8 +65,10 @@ t/test_verbose.t
 t/TestClassLoadSubclass.pm
 t/Tests.t
 t/todo.t
+xt/documented.t
 xt/meta.t
+xt/perlcritic.t
+xt/perlcriticrc
 xt/pmv.t
 xt/pod.t
-Makefile.PL
-META.yml
+xt/spelling.t
