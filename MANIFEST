@@ -23,6 +23,11 @@ t/expected_tests.t
 t/fail1.t
 t/fail2.t
 t/fail3.t
+t/filter.t
+t/filter_bad_filter.t
+t/filter_fixtures.t
+t/filter_fixtures_only.t
+t/filter_multiple.t
 t/header.t
 t/late_header.t
 t/methodinfo.t

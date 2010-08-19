@@ -21,6 +21,8 @@ sub new {
 
 sub name { shift->{name} };
 
+sub type { shift->{type} };
+
 sub num_tests	{ 
 	my ( $self, $n ) = @_;
 	if ( defined $n ) {
@@ -75,6 +77,8 @@ Holds info related to particular test methods. Not part of the public API and li
 =item B<is_type>
 
 =item B<name>
+
+=item B<type>
 
 =item B<num_tests>
 
