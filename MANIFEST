@@ -18,6 +18,7 @@ t/builder.t
 t/compile.t
 t/current_method.t
 t/diag_on_failure.t
+t/die-in-setup.t
 t/die_before_plan.t
 t/expected_tests.t
 t/fail1.t
@@ -51,6 +52,7 @@ t/show_plan_in_shutdown.t
 t/skip1.t
 t/skip2.t
 t/skip_class_reason.t
+t/skip_empty_classes.t
 t/spaces.t
 t/startup.t
 t/startup_that_dies.t
@@ -77,3 +79,4 @@ xt/perlcriticrc
 xt/pmv.t
 xt/pod.t
 xt/spelling.t
+META.json

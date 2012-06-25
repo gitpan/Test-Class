@@ -6,8 +6,9 @@ build_requires:
   IO::File: 1.09
   Test::Exception: 0.25
 configure_requires:
-  Module::Build: 0.36
-generated_by: 'Module::Build version 0.3607'
+  Module::Build: 0.38
+dynamic_config: 1
+generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.112150'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -16,7 +17,7 @@ name: Test-Class
 provides:
   Test::Class:
     file: lib/Test/Class.pm
-    version: 0.36
+    version: 0.37
   Test::Class::Load:
     file: lib/Test/Class/Load.pm
     version: 0.35
@@ -35,4 +36,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: http://github.com/adrianh/test-class/
-version: 0.36
+version: 0.37
