@@ -41,7 +41,7 @@
    "provides" : {
       "Test::Class" : {
          "file" : "lib/Test/Class.pm",
-         "version" : "0.37"
+         "version" : "0.38"
       },
       "Test::Class::Load" : {
          "file" : "lib/Test/Class/Load.pm",
@@ -61,5 +61,5 @@
          "url" : "http://github.com/adrianh/test-class/"
       }
    },
-   "version" : "0.37"
+   "version" : "0.38"
 }
