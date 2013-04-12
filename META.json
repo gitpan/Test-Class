@@ -4,7 +4,7 @@
       "Adrian Howard <adrianh@quietstars.com>, Curtis \"Ovid\" Poe, <ovid at cpan.org>, Mark Morgan <makk384@gmail.com>."
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.38, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Module::Build version 0.38, CPAN::Meta::Converter version 2.112621",
    "license" : [
       "perl_5"
    ],
@@ -41,7 +41,7 @@
    "provides" : {
       "Test::Class" : {
          "file" : "lib/Test/Class.pm",
-         "version" : "0.38"
+         "version" : "0.39"
       },
       "Test::Class::Load" : {
          "file" : "lib/Test/Class/Load.pm",
@@ -61,5 +61,5 @@
          "url" : "http://github.com/adrianh/test-class/"
       }
    },
-   "version" : "0.38"
+   "version" : "0.39"
 }
