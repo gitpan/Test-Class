@@ -70,13 +70,13 @@ INTRODUCTION
   A brief history lesson
     In 1994 Kent Beck wrote a testing framework for Smalltalk called SUnit.
     It was popular. You can read a copy of his original paper at
-    http://www.xprogramming.com/testfram.htm.
+    <http://www.xprogramming.com/testfram.htm>.
 
     Later Kent Beck and Erich Gamma created JUnit for testing Java
-    http://www.junit.org/. It was popular too.
+    <http://www.junit.org/>. It was popular too.
 
     Now there are xUnit frameworks for every language from Ada to XSLT. You
-    can find a list at http://www.xprogramming.com/software.htm.
+    can find a list at <http://www.xprogramming.com/software.htm>.
 
     While xUnit frameworks are traditionally associated with unit testing
     they are also useful in the creation of functional/acceptance tests.
@@ -165,7 +165,7 @@ METHOD TYPES
           is( 2-1, 1, 'subtraction works );
       };
 
-    This declares the `subtraction' method as a test method that runs one
+    This declares the "subtraction" method as a test method that runs one
     test.
 
     If your test method runs more than one test, you should put the number
@@ -177,15 +177,15 @@ METHOD TYPES
       };
 
     If you don't know the number of tests at compile time you can use
-    `no_plan' like this.
+    "no_plan" like this.
 
       sub check_class : Test(no_plan) {
           my $objects = shift->{objects};
           isa_ok($_, "Object") foreach @$objects;
       };
 
-    or use the :Tests attribute, which acts just like `:Test' but defaults
-    to `no_plan' if no number is given:
+    or use the :Tests attribute, which acts just like ":Test" but defaults
+    to "no_plan" if no number is given:
 
       sub check_class : Tests {
           my $objects = shift->{objects};
@@ -253,7 +253,7 @@ METHOD TYPES
       sub example : Test(startup => 1) {
           ok(1, 'a startup method with one test');
       };
-  
+
     If you want to run an unknown number of tests within your startup
     method, you need to say e.g.
 
@@ -285,13 +285,13 @@ RUNNING TESTS
   
       # and run them all
       Test::Class->runtests;
-  
+
     You can use Test::Class::Load to automatically load all the test classes
     in a given set of directories.
 
     If you need finer control you can create individual test objects with
     new(). For example to just run the tests in the test class
-    `Foo::Bar::Test' you can do:
+    "Foo::Bar::Test" you can do:
 
       Example::Test->new->runtests
 
@@ -353,7 +353,7 @@ RUNNING TESTS
     just normal perl classes. Setup, test and teardown methods are just
     normal methods. You are completely free to have other methods in your
     class that are called from your test methods, or have object specific
-    `new' and `DESTROY' methods.
+    "new" and "DESTROY" methods.
 
     In particular you can override the new() method to pass parameters to
     your test object, or re-define the number of tests a method will run.
@@ -365,7 +365,7 @@ TEST DESCRIPTIONS
     test description, for example:
 
       is $something, $something_else, 'a description of my test';
-    
+
     If you do not supply a test description, and the test function does not
     supply its own default, then Test::Class will use the name of the
     currently running test method, replacing all "_" characters with spaces
@@ -374,7 +374,7 @@ TEST DESCRIPTIONS
       sub one_plus_one_is_two : Test {
           is 1+1, 2;
       }
-  
+
     will result in:
 
       ok 1 - one plus one is two
@@ -403,7 +403,7 @@ RUNNING ORDER OF METHODS
           isa_ok(Object->new, "Object") or $self->BAILOUT('new fails!');
       };
 
-    The leading `_' will force the above method to run first - allowing the
+    The leading "_" will force the above method to run first - allowing the
     entire suite to be aborted before any other test methods run.
 
 HANDLING EXCEPTIONS
@@ -432,8 +432,9 @@ HANDLING EXCEPTIONS
     This can considerably simplify testing code that throws exceptions.
 
     Rather than having to explicitly check that the code exited normally
-    (e.g. with Test::Exception) the test will fail automatically - without
-    aborting the other test methods. For example contrast:
+    (e.g. with "lives_ok" in Test::Exception) the test will fail
+    automatically - without aborting the other test methods. For example
+    contrast:
 
       use Test::Exception;
 
@@ -446,7 +447,7 @@ HANDLING EXCEPTIONS
       sub read_file : Test {
           is(read_file('test.txt'), "content", 'test file read');
       };
-  
+
     If more than one test remains after an exception then the first one is
     failed, and the remaining ones are skipped.
 
@@ -462,7 +463,7 @@ RETURNING EARLY
     the missing tests are deemed to have been skipped; see "Skipped Tests"
     for more information.
 
-    However, if the class's `fail_if_returned_early' method returns true,
+    However, if the class's "fail_if_returned_early" method returns true,
     then the missing tests will be deemed to have failed. For example,
 
       package MyClass;
@@ -493,7 +494,7 @@ SKIPPED TESTS
           ok( $pig->airspeed > 0, '  and moving'    );
       };
 
-    If you run this test in an environment where `Pig->new' worked and the
+    If you run this test in an environment where "Pig->new" worked and the
     takeoff method existed, but failed when ran, you would get:
 
       ok 1 - The object isa Pig
@@ -503,9 +504,9 @@ SKIPPED TESTS
       ok 5 # skip takeoff failed
 
     You can also skip tests just as you do in Test::More or Test::Builder -
-    see Test::More for more information.
+    see "Conditional tests" in Test::More for more information.
 
-    *Note:* if you want to skip tests in a method with `no_plan' tests then
+    *Note:* if you want to skip tests in a method with "no_plan" tests then
     you have to explicitly skip the tests in the method - since Test::Class
     cannot determine how many tests (if any) should be skipped:
 
@@ -528,18 +529,18 @@ SKIPPED TESTS
 
 TO DO TESTS
     You can create todo tests just as you do in Test::More and Test::Builder
-    using the `$TODO' variable. For example:
+    using the $TODO variable. For example:
 
       sub live_test : Test  {
           local $TODO = "live currently unimplemented";
           ok(Object->live, "object live");
       };
 
-    See Test::Harness for more information.
+    See "Todo tests" in Test::Harness for more information.
 
 EXTENDING TEST CLASSES BY INHERITANCE
     You can extend test methods by inheritance in the usual way. For example
-    consider the following test class for a `Pig' object.
+    consider the following test class for a "Pig" object.
 
       package Pig::Test;
       use base qw(Test::Class);
@@ -566,12 +567,12 @@ EXTENDING TEST CLASSES BY INHERITANCE
           is($pig->age, 3, "age accessed");
       };
 
-    Next consider `NamedPig' a subclass of `Pig' where you can give your pig
+    Next consider "NamedPig" a subclass of "Pig" where you can give your pig
     a name.
 
-    We want to make sure that all the tests for the `Pig' object still work
-    for `NamedPig'. We can do this by subclassing `Pig::Test' and overriding
-    the `testing_class' and `new_args' methods.
+    We want to make sure that all the tests for the "Pig" object still work
+    for "NamedPig". We can do this by subclassing "Pig::Test" and overriding
+    the "testing_class" and "new_args" methods.
 
       package NamedPig::Test;
       use base qw(Pig::Test);
@@ -581,7 +582,7 @@ EXTENDING TEST CLASSES BY INHERITANCE
       sub new_args { (shift->SUPER::new_args, -name => 'Porky') };
 
     Now we need to test the name method. We could write another test method,
-    but we also have the option of extending the existing `check_fields'
+    but we also have the option of extending the existing "check_fields"
     method.
 
       sub check_fields : Test(2) {
@@ -591,13 +592,13 @@ EXTENDING TEST CLASSES BY INHERITANCE
       };
 
     While the above works, the total number of tests for the method is
-    dependent on the number of tests in its `SUPER::check_fields'. If we add
-    a test to `Pig::Test->check_fields' we will also have to update the
-    number of tests of `NamedPig::test->check_fields'.
+    dependent on the number of tests in its "SUPER::check_fields". If we add
+    a test to "Pig::Test->check_fields" we will also have to update the
+    number of tests of "NamedPig::test->check_fields".
 
     Test::Class allows us to state explicitly that we are adding tests to an
-    existing method by using the `+' prefix. Since we are adding a single
-    test to `check_fields' it can be rewritten as:
+    existing method by using the "+" prefix. Since we are adding a single
+    test to "check_fields" it can be rewritten as:
 
       sub check_fields : Test(+1) {
           my $self = shift;
@@ -605,8 +606,8 @@ EXTENDING TEST CLASSES BY INHERITANCE
           is($self->{pig}->name, 'Porky', 'name accessed');
       };
 
-    With the above definition you can add tests to `check_fields' in
-    `Pig::Test' without affecting `NamedPig::Test'.
+    With the above definition you can add tests to "check_fields" in
+    "Pig::Test" without affecting "NamedPig::Test".
 
 RUNNING INDIVIDUAL TESTS
     NOTE: The exact mechanism for running individual tests is likely to
@@ -614,15 +615,15 @@ RUNNING INDIVIDUAL TESTS
 
     Sometimes you just want to run a single test. Commenting out other tests
     or writing code to skip them can be a hassle, so you can specify the
-    `TEST_METHOD' environment variable. The value is expected to be a valid
+    "TEST_METHOD" environment variable. The value is expected to be a valid
     regular expression and, if present, only runs test methods whose names
     match the regular expression. Startup, setup, teardown and shutdown
     tests will still be run.
 
     One easy way of doing this is by specifying the environment variable
-    *before* the `runtests' method is called.
+    *before* the "runtests" method is called.
 
-    Running a test named `customer_profile':
+    Running a test named "customer_profile":
 
      #! /usr/bin/perl
      use Example::Test;
@@ -630,7 +631,7 @@ RUNNING INDIVIDUAL TESTS
      $ENV{TEST_METHOD} = 'customer_profile';
      Test::Class->runtests;
 
-    Running all tests with `customer' in their name:
+    Running all tests with "customer" in their name:
 
      #! /usr/bin/perl
      use Example::Test;
@@ -656,8 +657,8 @@ ORGANISING YOUR TEST CLASSES
     You can, of course, organise your test modules as you wish. My personal
     preferences is:
 
-    *   Name test classes with a suffix of `::Test' so the test class for
-        the `Foo::Bar' module would be `Foo::Bar::Test'.
+    *   Name test classes with a suffix of "::Test" so the test class for
+        the "Foo::Bar" module would be "Foo::Bar::Test".
 
     *   Place all test classes in t/lib.
 
@@ -673,12 +674,13 @@ A NOTE ON LOADING TEST CLASSES
     modules. Basically while:
 
       require $some_test_class;
-  
+
     will break, doing:
 
       BEGIN { require $some_test_class };
-  
-    will work just fine. For more information on CHECK blocks see perlmod.
+
+    will work just fine. For more information on CHECK blocks see "BEGIN,
+    CHECK, INIT and END" in perlmod.
 
     If you still can't arrange for your classes to be loaded at runtime, you
     could use an alternative mechanism for adding your tests:
@@ -759,21 +761,21 @@ METHODS
 
         Marks a startup, setup, test, teardown or shutdown method. See
         runtests() for information on how to run methods declared with the
-        `Test' attribute.
+        "Test" attribute.
 
         N specifies the number of tests the method runs.
 
         *   If N is an integer then the method should run exactly N tests.
 
-        *   If N is an integer with a `+' prefix then the method is expected
-            to call its `SUPER::' method and extend it by running N
+        *   If N is an integer with a "+" prefix then the method is expected
+            to call its "SUPER::" method and extend it by running N
             additional tests.
 
-        *   If N is the string `no_plan' then the method can run an
+        *   If N is the string "no_plan" then the method can run an
             arbitrary number of tests.
 
-        If N is not specified it defaults to `1' for test methods, and `0'
-        for startup, setup, teardown and shutdown methods.
+        If N is not specified it defaults to 1 for test methods, and 0 for
+        startup, setup, teardown and shutdown methods.
 
         You can change the number of tests that a method runs using
         num_method_tests() or num_tests().
@@ -782,8 +784,8 @@ METHODS
           sub method_name : Tests { ... };
           sub method_name : Tests(N) { ... };
 
-        Acts just like the `:Test' attribute, except that if the number of
-        tests is not specified it defaults to `no_plan'. So the following
+        Acts just like the ":Test" attribute, except that if the number of
+        tests is not specified it defaults to "no_plan". So the following
         are equivalent:
 
           sub silly1 :Test( no_plan ) { ok(1) foreach (1 .. rand 5) };
@@ -797,7 +799,7 @@ METHODS
         key/value pairs.
 
         If called as an object method the existing object's key/value pairs
-        are copied into the new object. Any key/value pairs passed to `new'
+        are copied into the new object. Any key/value pairs passed to "new"
         override those in the original object if duplicates occur.
 
         Since the test object is passed to every test method as it runs it
@@ -815,7 +817,7 @@ METHODS
               ok($o->open($dbh), "opened ok");
           };
 
-        See num_method_tests() for an example of overriding `new'.
+        See num_method_tests() for an example of overriding "new".
 
     expected_tests
           $n = $Tests->expected_tests
@@ -827,20 +829,20 @@ METHODS
         specified class/object. This includes tests run by any setup and
         teardown methods.
 
-        Will return `no_plan' if the exact number of tests is undetermined
+        Will return "no_plan" if the exact number of tests is undetermined
         (i.e. if any setup, test or teardown method has an undetermined
         number of tests).
 
-        The `expected_tests' of an object after runtests() has been executed
+        The "expected_tests" of an object after runtests() has been executed
         will include any run time changes to the expected number of tests
         made by num_tests() or num_method_tests().
 
-        `expected_tests' can also take an optional list of test objects,
+        "expected_tests" can also take an optional list of test objects,
         test classes and integers. In this case the result is the total
         number of expected tests for all the test/object classes (including
         the one the method was applied to) plus any integer values.
 
-        `expected_tests' is useful when you're integrating one or more test
+        "expected_tests" is useful when you're integrating one or more test
         classes into a more traditional test script, for example:
 
           use Test::More;
@@ -858,18 +860,18 @@ METHODS
           $allok = $Tests->runtests(TEST, ...)
           $allok = CLASS->runtests(TEST, ...)
 
-        `runtests' is used to run test classes. At its most basic doing:
+        "runtests" is used to run test classes. At its most basic doing:
 
           $test->runtests
-  
+
         will run the test methods of the test object $test, unless
-        `$test->SKIP_CLASS' returns a true value.
+        "$test->SKIP_CLASS" returns a true value.
 
         Unless you have already specified a test plan using Test::Builder
-        (or Test::More, et al) `runtests' will set the test plan just before
+        (or Test::More, et al) "runtests" will set the test plan just before
         the first method that runs a test is executed.
 
-        If the environment variable `TEST_VERBOSE' is set `runtests' will
+        If the environment variable "TEST_VERBOSE" is set "runtests" will
         display the name of each test method before it runs like this:
 
           # My::Test::Class->my_test
@@ -877,10 +879,10 @@ METHODS
           # My::Test::Class->another_test
           ok 2 - bar
 
-        Just like expected_tests(), `runtests' can take an optional list of
+        Just like expected_tests(), "runtests" can take an optional list of
         test object/classes and integers. All of the test object/classes are
         run. Any integers are added to the total number of tests shown in
-        the test header output by `runtests'.
+        the test header output by "runtests".
 
         For example, you can run all the tests in test classes A, B and C,
         plus one additional normal test by doing:
@@ -888,7 +890,7 @@ METHODS
             Test::Class->runtests(qw(A B C), +1);
             ok(1==1, 'non class test');
 
-        Finally, if you call `runtests' on a test class without any
+        Finally, if you call "runtests" on a test class without any
         arguments it will run all of the test methods of that class, and all
         subclasses of that class. For example:
 
@@ -901,7 +903,7 @@ METHODS
   
           # run all the Foo*Test modules we just loaded
           Test::Class->runtests;
-    
+
     SKIP_CLASS
           $reason = CLASS->SKIP_CLASS;
           CLASS->SKIP_CLASS( $reason );
@@ -915,8 +917,8 @@ METHODS
         class that should not run just add the following to your module:
 
           My::Abstract::Test->SKIP_CLASS( 1 );
-  
-        This will not affect any sub-classes of `My::Abstract::Test' which
+
+        This will not affect any sub-classes of "My::Abstract::Test" which
         will run as normal.
 
         If the true value returned by SKIP_CLASS is anything other than "1"
@@ -927,7 +929,7 @@ METHODS
               $ENV{POSTGRES_HOME} ? 0 : '$POSTGRES_HOME needs to be set'
           );
 
-        will output something like this if `POSTGRES_HOME' is not set
+        will output something like this if "POSTGRES_HOME" is not set
 
             ... other tests ...
             ok 123 # skip My::Postgres::Test  - $POSTGRES_HOME needs to be set
@@ -940,7 +942,7 @@ METHODS
           sub My::Postgres::Test::SKIP_CLASS {
               $ENV{POSTGRES_HOME} ? 0 : '$POSTGRES_HOME needs to be set'
           };
-  
+
   Fetching and setting a method's test number
     num_method_tests
           $n = $Tests->num_method_tests($method_name)
@@ -952,10 +954,10 @@ METHODS
         to run.
 
         If the method has an undetermined number of tests then $n should be
-        the string `no_plan'.
+        the string "no_plan".
 
         If the method is extending the number of tests run by the method in
-        a superclass then $n should have a `+' prefix.
+        a superclass then $n should have a "+" prefix.
 
         When called as a class method any change to the expected number of
         tests applies to all future test objects. Existing test objects are
@@ -964,7 +966,7 @@ METHODS
         When called as an object method any change to the expected number of
         tests applies to that object alone.
 
-        `num_method_tests' is useful when you need to set the expected
+        "num_method_tests" is useful when you need to set the expected
         number of tests at object creation time, rather than at compile
         time.
 
@@ -997,11 +999,11 @@ METHODS
         This allows better diagnostics from runtests(), Test::Builder and
         Test::Harness.
 
-        `num_method_tests' is a protected method and can only be called by
+        "num_method_tests" is a protected method and can only be called by
         subclasses of Test::Class. It fetches or sets the expected number of
         tests for the methods of the class it was *called in*, not the
         methods of the object/class it was *applied to*. This allows test
-        classes that use `num_method_tests' to be subclassed easily.
+        classes that use "num_method_tests" to be subclassed easily.
 
         For example, consider the creation of a subclass of Object::Test
         that ensures that all the opened objects are read-only:
@@ -1020,8 +1022,8 @@ METHODS
           # This runs three tests
           Special::Object::Test->new(objects => [$o1, $o2]);
 
-        Since the call to `num_method_tests' in Object::Test only affects
-        the `test_objects' of Object::Test, the above works as you would
+        Since the call to "num_method_tests" in Object::Test only affects
+        the "test_objects" of Object::Test, the above works as you would
         expect.
 
     num_tests
@@ -1044,7 +1046,7 @@ METHODS
           };
 
         Setting the number of expected tests at run time, rather than just
-        having a `no_plan' test method, allows runtests() to display
+        having a "no_plan" test method, allows runtests() to display
         appropriate diagnostic messages if the method runs a different
         number of tests.
 
@@ -1066,7 +1068,7 @@ METHODS
           $method_name = CLASS->current_method
 
         Returns the name of the test method currently being executed by
-        runtests(), or `undef' if runtests() has not been called.
+        runtests(), or "undef" if runtests() has not been called.
 
         The method name is also available in the setup and teardown methods
         that run before and after the test method. This can be useful in
@@ -1088,8 +1090,8 @@ METHODS
 
           $self->builder->BAILOUT
 
-        See Test::Builder for details. Any teardown and shutdown methods are
-        *not* run.
+        See "BAILOUT" in Test::Builder for details. Any teardown and
+        shutdown methods are *not* run.
 
     FAIL_ALL
           $Tests->FAIL_ALL($reason)
@@ -1097,8 +1099,8 @@ METHODS
 
         Things are going so badly all the remaining tests in the current
         script should fail. Exits immediately with the number of tests
-        failed, or `254' if more than 254 tests were run. Any teardown
-        methods are *not* run.
+        failed, or 254 if more than 254 tests were run. Any teardown methods
+        are *not* run.
 
         This does not affect the running of any other test scripts invoked
         by Test::Harness.
@@ -1118,7 +1120,7 @@ METHODS
           CLASS->SKIP_ALL($reason)
 
         Things are going so badly all the remaining tests in the current
-        script should be skipped. Exits immediately with `0' - teardown
+        script should be skipped. Exits immediately with 0 - teardown
         methods are *not* run.
 
         This does not affect the running of any other test scripts invoked
@@ -1136,13 +1138,13 @@ METHODS
           CLASS->add_testinfo($name, $type, $num_tests)
 
         Chiefly for use by libraries like Test::Class::Sugar, which can't
-        use the `:Test(...)' interfaces make test methods. `add_testinfo'
+        use the ":Test(...)" interfaces make test methods. "add_testinfo"
         informs the class about a test method that has been defined without
-        a `Test', `Tests' or other attribute.
+        a "Test", "Tests" or other attribute.
 
-        `$name' is the name of the method, `$type' must be one of `startup',
-        `setup', `test', `teardown' or `shutdown', and `$num_tests' has the
-        same meaning as `N' in the description of the Test attribute.
+        $name is the name of the method, $type must be one of "startup",
+        "setup", "test", "teardown" or "shutdown", and $num_tests has the
+        same meaning as "N" in the description of the Test attribute.
 
     add_filter
             CLASS->add_filter($filter_coderef);
@@ -1262,7 +1264,7 @@ OTHER MODULES FOR XUNIT TESTING IN PERL
         new test assertion API. It does not support todo tests.
 
     Test::Unit
-        Test::Unit is a port of JUnit http://www.junit.org/ into perl. If
+        Test::Unit is a port of JUnit <http://www.junit.org/> into perl. If
         you have used JUnit then the Test::Unit framework should be very
         familiar.
 
@@ -1285,36 +1287,36 @@ BUGS
 
     If you find any bugs please let me know by e-mail at
     <adrianh@quietstars.com>, or report the problem with
-    http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-Class.
+    <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-Class>.
 
 COMMUNITY
   perl-qa
     If you are interested in testing using Perl I recommend you visit
-    http://qa.perl.org/ and join the excellent perl-qa mailing list. See
-    http://lists.perl.org/showlist.cgi?name=perl-qa for details on how to
+    <http://qa.perl.org/> and join the excellent perl-qa mailing list. See
+    <http://lists.perl.org/showlist.cgi?name=perl-qa> for details on how to
     subscribe.
 
   perlmonks
     You can find users of Test::Class, including the module author, on
-    http://www.perlmonks.org/. Feel free to ask questions on Test::Class
+    <http://www.perlmonks.org/>. Feel free to ask questions on Test::Class
     there.
 
   CPAN::Forum
     The CPAN Forum is a web forum for discussing Perl's CPAN modules. The
     Test::Class forum can be found at
-    http://www.cpanforum.com/dist/Test-Class.
+    <http://www.cpanforum.com/dist/Test-Class>.
 
 TO DO
     If you think this module should do something that it doesn't (or does
     something that it shouldn't) please let me know.
 
     You can see my current to do list at
-    http://adrianh.tadalist.com/lists/public/4798, with an RSS feed of
-    changes at http://adrianh.tadalist.com/lists/feed_public/4798.
+    <http://adrianh.tadalist.com/lists/public/4798>, with an RSS feed of
+    changes at <http://adrianh.tadalist.com/lists/feed_public/4798>.
 
 ACKNOWLEDGMENTS
     This is yet another implementation of the ideas from Kent Beck's Testing
-    Framework paper http://www.xprogramming.com/testfram.htm.
+    Framework paper <http://www.xprogramming.com/testfram.htm>.
 
     Thanks to Adam Kennedy, agianni, Alexander D'Archangel, Andrew
     Grangaard, Apocalypse, Ask Bjorn Hansen, Chris Dolan, Chris Williams,
@@ -1340,13 +1342,13 @@ AUTHORS
     cpan.org>, Mark Morgan <makk384@gmail.com>.
 
     If you use this module, and can spare the time please let us know or
-    rate it at http://cpanratings.perl.org/rate/?distribution=Test-Class.
+    rate it at <http://cpanratings.perl.org/rate/?distribution=Test-Class>.
 
 SEE ALSO
     Test::Class::Load
         Simple way to load "Test::Class" classes automatically.
 
-    http://del.icio.us/tag/Test::Class
+    <http://del.icio.us/tag/Test::Class>
         Delicious links on Test::Class.
 
     Perl Testing: A Developer's Notebook by Ian Langworth and chromatic
@@ -1365,10 +1367,10 @@ SEE ALSO
     Test::Simple & Test::More
         Basic utilities for writing tests.
 
-    http://qa.perl.org/test-modules.html
+    <http://qa.perl.org/test-modules.html>
         Overview of some of the many testing modules available on CPAN.
 
-    http://del.icio.us/tag/perl+testing
+    <http://del.icio.us/tag/perl+testing>
         Delicious links on perl testing.
 
     Test::Object
@@ -1380,11 +1382,11 @@ SEE ALSO
     The following modules use Test::Class as part of their test suite. You
     might want to look at them for usage examples:
 
-        Aspect, Bricolage (http://www.bricolage.cc/), Class::StorageFactory,
-        CGI::Application::Search, DBIx::Romani, Xmldoom, Object::Relational,
-        File::Random, Geography::JapanesePrefectures, Google::Adwords,
-        Merge::HashRef, PerlBuildSystem, Pixie, Yahoo::Marketing, and
-        XUL-Node
+        Aspect, Bricolage (<http://www.bricolage.cc/>),
+        Class::StorageFactory, CGI::Application::Search, DBIx::Romani,
+        Xmldoom, Object::Relational, File::Random,
+        Geography::JapanesePrefectures, Google::Adwords, Merge::HashRef,
+        PerlBuildSystem, Pixie, Yahoo::Marketing, and XUL-Node
 
     The following modules are not based on Test::Builder, but may be of
     interest as alternatives to Test::Class.
