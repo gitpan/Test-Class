@@ -1,5 +1,9 @@
 Changes for Perl extension Test-Class
 
+0.42   or the "how did I get stuck with co-maint?" release [2014-05-07]
+    -   properly handle thrown exceptions that stringify to the empty string
+        before or after chomping (Karen Etheridge, PR#11)
+
 0.41   or the "0.99 was a bad year" release [2013-11-30]
     -   require a newer Test::Builder if 0.99 is installed RT#90699
 

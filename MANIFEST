@@ -4,7 +4,11 @@ lib/Test/Class.pm
 lib/Test/Class/Load.pm
 lib/Test/Class/MethodInfo.pm
 LICENSE
-MANIFEST			This list of files
+Makefile.PL
+MANIFEST
+META.json
+META.yml
+README
 t/00-load.t
 t/20-load-classes.t
 t/21-load-subclassed.t
@@ -38,6 +42,8 @@ t/rt17264.t
 t/run_all_tests.t
 t/runtests.t
 t/runtests_die.t
+t/runtests_die_empty.t
+t/runtests_die_nearlyempty.t
 t/runtests_extra.t
 t/runtests_noplan.t
 t/runtests_of.t
@@ -76,7 +82,3 @@ xt/perlcriticrc
 xt/pmv.t
 xt/pod.t
 xt/spelling.t
-Makefile.PL
-README
-META.yml
-META.json
