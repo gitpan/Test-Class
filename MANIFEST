@@ -3,9 +3,8 @@ Changes
 lib/Test/Class.pm
 lib/Test/Class/Load.pm
 lib/Test/Class/MethodInfo.pm
-LICENSE
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 META.json
 META.yml
 README

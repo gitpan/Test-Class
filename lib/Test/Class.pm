@@ -11,7 +11,7 @@ use Storable qw(dclone);
 use Test::Builder;
 use Test::Class::MethodInfo;
 
-our $VERSION = '0.42';
+our $VERSION = '0.43';
 
 my $Check_block_has_run;
 {
@@ -60,7 +60,7 @@ sub _methods_of_class {
     my ( $self, $class ) = @_;
     my $test_info = _test_info($self) 
         or die "Test::Class internals seem confused. Did you override "
-            . "new() in a sub-class or via multiple inheritence?\n";
+            . "new() in a sub-class or via multiple inheritance?\n";
     return values %{ $test_info->{$class} };
 };
 
