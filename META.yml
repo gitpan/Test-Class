@@ -22,13 +22,13 @@ name: Test-Class
 provides:
   Test::Class:
     file: lib/Test/Class.pm
-    version: '0.43'
+    version: '0.44'
   Test::Class::Load:
     file: lib/Test/Class/Load.pm
-    version: '0.43'
+    version: '0.44'
   Test::Class::MethodInfo:
     file: lib/Test/Class/MethodInfo.pm
-    version: '0.43'
+    version: '0.44'
 requires:
   Attribute::Handlers: '0.77'
   Carp: '0'
@@ -46,4 +46,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: http://github.com/adrianh/test-class/
-version: '0.43'
+version: '0.44'

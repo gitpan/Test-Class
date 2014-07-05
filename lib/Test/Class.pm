@@ -11,7 +11,7 @@ use Storable qw(dclone);
 use Test::Builder;
 use Test::Class::MethodInfo;
 
-our $VERSION = '0.43';
+our $VERSION = '0.44';
 
 my $Check_block_has_run;
 {
@@ -391,6 +391,7 @@ sub runtests {
                         _show_header($t, @tests) unless _has_no_tests($t, $method);
                         $all_passed = 0 unless _run_method($t, $method, \@tests);
                         if ( _threw_exception( $t, $method ) ) {
+			    next if ($method eq $test);
                             my $num_to_skip = _total_num_tests($t, @methods_to_run);
                             $Builder->skip( "$method died" ) for ( 1 .. $num_to_skip );
                             last;

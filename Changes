@@ -1,6 +1,10 @@
 Changes for Perl extension Test-Class
 
-0.43
+0.44   [2014-07-04]
+    -   run teardown method even if test method dies, as in version 0.37 and
+        earlier
+
+0.43   [2014-06-25]
     -   specify test prereqs as test_requires rather than build_requires
 
 0.42   or the "how did I get stuck with co-maint?" release [2014-05-07]
