@@ -14,7 +14,7 @@ WriteMakefile
                    'Storable' => '2.04',
                    'Test::Builder' => '0.78',
                    'Test::Builder::Tester' => '1.02',
-                   'Test::Simple' => '0.78',
+                   'Test::Simple' => '1.001002',
                    'constant' => '0',
                    'strict' => '0',
                    'warnings' => '0'

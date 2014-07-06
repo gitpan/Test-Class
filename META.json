@@ -29,7 +29,7 @@
             "Storable" : "2.04",
             "Test::Builder" : "0.78",
             "Test::Builder::Tester" : "1.02",
-            "Test::Simple" : "0.78",
+            "Test::Simple" : "1.001002",
             "constant" : "0",
             "perl" : "5.008001",
             "strict" : "0",
@@ -51,15 +51,15 @@
    "provides" : {
       "Test::Class" : {
          "file" : "lib/Test/Class.pm",
-         "version" : "0.44"
+         "version" : "0.45"
       },
       "Test::Class::Load" : {
          "file" : "lib/Test/Class/Load.pm",
-         "version" : "0.44"
+         "version" : "0.45"
       },
       "Test::Class::MethodInfo" : {
          "file" : "lib/Test/Class/MethodInfo.pm",
-         "version" : "0.44"
+         "version" : "0.45"
       }
    },
    "release_status" : "stable",
@@ -71,5 +71,5 @@
          "url" : "http://github.com/adrianh/test-class/"
       }
    },
-   "version" : "0.44"
+   "version" : "0.45"
 }
