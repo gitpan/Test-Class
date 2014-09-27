@@ -11,7 +11,7 @@ use Storable qw(dclone);
 use Test::Builder;
 use Test::Class::MethodInfo;
 
-our $VERSION = '0.46';
+our $VERSION = '0.47';
 
 my $Check_block_has_run;
 {
@@ -650,7 +650,7 @@ You define test methods using the L<Test|/"Test"> attribute. For example:
   use Test::More;
 
   sub subtraction : Test {
-      is( 2-1, 1, 'subtraction works );
+      is( 2-1, 1, 'subtraction works' );
   };
 
 This declares the C<subtraction> method as a test method that runs one test. 
