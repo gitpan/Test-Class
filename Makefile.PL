@@ -11,10 +11,12 @@ WriteMakefile
                    'File::Find' => '0',
                    'File::Spec' => '0',
                    'MRO::Compat' => '0.11',
+                   'Module::Runtime' => '0',
                    'Storable' => '2.04',
                    'Test::Builder' => '0.78',
                    'Test::Builder::Tester' => '1.02',
                    'Test::Simple' => '1.001002',
+                   'Try::Tiny' => '0',
                    'constant' => '0',
                    'strict' => '0',
                    'warnings' => '0'
