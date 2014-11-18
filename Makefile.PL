@@ -3,26 +3,24 @@ require 5.008001;
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-  'NAME' => 'Test::Class',
+  'INSTALLDIRS' => 'site',
   'VERSION_FROM' => 'lib/Test/Class.pm',
+  'EXE_FILES' => [],
   'PREREQ_PM' => {
-                   'Attribute::Handlers' => '0.77',
-                   'Carp' => '0',
                    'File::Find' => '0',
                    'File::Spec' => '0',
-                   'MRO::Compat' => '0.11',
-                   'Module::Runtime' => '0',
+                   'Carp' => '0',
                    'Storable' => '2.04',
-                   'Test::Builder' => '0.78',
+                   'warnings' => '0',
+                   'MRO::Compat' => '0.11',
                    'Test::Builder::Tester' => '1.02',
-                   'Test::Simple' => '1.001002',
-                   'Try::Tiny' => '0',
                    'constant' => '0',
+                   'Test::Simple' => '1.001002',
+                   'Test::Builder' => '0.78',
                    'strict' => '0',
-                   'warnings' => '0'
+                   'Attribute::Handlers' => '0.77'
                  },
-  'INSTALLDIRS' => 'site',
-  'EXE_FILES' => [],
+  'NAME' => 'Test::Class',
   'PL_FILES' => {}
 )
 ;

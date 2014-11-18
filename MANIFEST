@@ -3,11 +3,7 @@ Changes
 lib/Test/Class.pm
 lib/Test/Class/Load.pm
 lib/Test/Class/MethodInfo.pm
-Makefile.PL
 MANIFEST			This list of files
-META.json
-META.yml
-README
 t/00-load.t
 t/20-load-classes.t
 t/21-load-subclassed.t
@@ -37,7 +33,6 @@ t/num_method_tests.t
 t/num_tests.t
 t/override.t
 t/rt15870.t
-t/rt17264.t
 t/run_all_tests.t
 t/runtests.t
 t/runtests_die.t
@@ -75,6 +70,7 @@ t/test_verbose.t
 t/TestClassLoadSubclass.pm
 t/Tests.t
 t/todo.t
+t/WarnCatch.pm
 xt/documented.t
 xt/meta.t
 xt/perlcritic.t
@@ -82,3 +78,7 @@ xt/perlcriticrc
 xt/pmv.t
 xt/pod.t
 xt/spelling.t
+Makefile.PL
+README
+META.yml
+META.json

@@ -6,7 +6,7 @@ SYNOPSIS
       use base qw(Test::Class);
       use Test::More;
 
-      # setup methods are run before every test method.
+      # setup methods are run before every test method. 
       sub make_fixture : Test(setup) {
           my $array = [1, 2];
           shift->{test_array} = $array;
@@ -276,13 +276,13 @@ RUNNING TESTS
     to easily load multiple test classes in a *.t file and run them all.
 
       #! /usr/bin/perl
-
+  
       # load all the test classes I want to run
       use Foo::Test;
       use Foo::Bar::Test;
       use Foo::Fribble::Test;
       use Foo::Ni::Test;
-
+  
       # and run them all
       Test::Class->runtests;
 
@@ -558,7 +558,7 @@ EXTENDING TEST CLASSES BY INHERITANCE
 
       sub _creation : Test {
           my $self = shift;
-          isa_ok($self->{pig}, $self->testing_class)
+          isa_ok($self->{pig}, $self->testing_class) 
                   or $self->FAIL_ALL('Pig->new failed');
       }
 
@@ -587,7 +587,7 @@ EXTENDING TEST CLASSES BY INHERITANCE
 
       sub check_fields : Test(2) {
           my $self = shift;
-          $self->SUPER::check_fields;
+          $self->SUPER::check_fields;   
           is($self->{pig}->name, 'Porky', 'name accessed');
       }
 
@@ -627,7 +627,7 @@ RUNNING INDIVIDUAL TESTS
 
      #! /usr/bin/perl
      use Example::Test;
-
+      
      $ENV{TEST_METHOD} = 'customer_profile';
      Test::Class->runtests;
 
@@ -635,7 +635,7 @@ RUNNING INDIVIDUAL TESTS
 
      #! /usr/bin/perl
      use Example::Test;
-
+      
      $ENV{TEST_METHOD} = '.*customer.*';
      Test::Class->runtests;
 
@@ -644,7 +644,7 @@ RUNNING INDIVIDUAL TESTS
 
      #! /usr/bin/perl
      use Example::Test;
-
+      
      $ENV{TEST_METHOD} = 'C++';
      Test::Class->runtests;
 
@@ -664,33 +664,6 @@ ORGANISING YOUR TEST CLASSES
 
     The Test::Class::Load provides a simple mechanism for easily loading all
     of the test classes in a given set of directories.
-
-A NOTE ON LOADING TEST CLASSES
-    Due to its use of subroutine attributes Test::Class based modules must
-    be loaded at compile rather than run time. This is because the :Test
-    attribute is applied by a CHECK block.
-
-    This can be problematic if you want to dynamically load Test::Class
-    modules. Basically while:
-
-      require $some_test_class;
-
-    will break, doing:
-
-      BEGIN { require $some_test_class }
-
-    will work just fine. For more information on CHECK blocks see "BEGIN,
-    CHECK, INIT and END" in perlmod.
-
-    If you still can't arrange for your classes to be loaded at runtime, you
-    could use an alternative mechanism for adding your tests:
-
-      # sub test_something : Test(3) {...}
-      # becomes
-      sub test_something {...}
-      __PACKAGE__->add_testinfo('test_something', test => 3);
-
-    See the add_testinfo method for more details.
 
 GENERAL FILTERING OF TESTS
     The use of $ENV{TEST_METHOD} to run just a subset of tests is useful,
@@ -896,11 +869,11 @@ METHODS
 
           #! /usr/bin/perl
           # Test all the Foo stuff
-
+  
           use Foo::Test;
           use Foo::Bar::Test;
           use Foo::Ni::Test;
-
+  
           # run all the Foo*Test modules we just loaded
           Test::Class->runtests;
 
@@ -973,7 +946,7 @@ METHODS
         For example, the following test class will run a different number of
         tests depending on the number of objects supplied.
 
-          package Object::Test;
+          package Object::Test; 
           use base qw(Test::Class);
           use Test::More;
 
@@ -1110,7 +1083,7 @@ METHODS
 
           sub _test_new : Test(3) {
               my $self = shift;
-              isa_ok(Object->new, "Object")
+              isa_ok(Object->new, "Object") 
                   || $self->FAIL_ALL('cannot create Objects');
               ...
           }
@@ -1131,7 +1104,7 @@ METHODS
 
           sub _darwin_only : Test(setup) {
               my $self = shift;
-              $self->SKIP_ALL("darwin only") unless $^O eq "darwin";
+              $self->SKIP_ALL("darwin only") unless $^O eq "darwin";    
           }
 
     add_testinfo
