@@ -11,7 +11,7 @@ use Storable qw(dclone);
 use Test::Builder;
 use Test::Class::MethodInfo;
 
-our $VERSION = '0.48';
+our $VERSION = '0.49';
 
 use constant NO_PLAN    => "no_plan";
 use constant SETUP      => "setup";
@@ -89,7 +89,7 @@ sub _is_public_method {
 sub Test : ATTR(CODE,RAWDATA,BEGIN) {
     my ($class, $symbol, $code_ref, $attr, $args) = @_;
     if ($symbol eq "ANON") {
-        warn "cannot test anonymous subs - you probably loaded a Test::Class too late (after the CHECK block was run). See 'A NOTE ON LOADING TEST CLASSES' in perldoc Test::Class for more details\n";
+        warn "cannot test anonymous subs - you probably loaded a Test::Class too late. See 'A NOTE ON LOADING TEST CLASSES' in perldoc Test::Class for more details\n";
     } else {
         my $name = *{$symbol}{NAME};
         warn "overriding public method $name with a test method in $class\n"
@@ -1100,6 +1100,31 @@ Place all test classes in F<t/lib>.
 =back
 
 The L<Test::Class::Load> provides a simple mechanism for easily loading all of the test classes in a given set of directories.
+
+
+=head1 A NOTE ON LOADING TEST CLASSES
+
+Due to its use of subroutine attributes Test::Class based modules must be loaded
+at compile rather than run time on versions of perl prior to 5.12.0.
+
+This can be problematic if you want to dynamically load Test::Class modules. Basically while:
+
+  require $some_test_class;
+
+will break, doing:
+
+  BEGIN { require $some_test_class }
+
+will work just fine.
+
+If you still can't arrange for your classes to be loaded at runtime, you could use an alternative mechanism for adding your tests:
+
+  # sub test_something : Test(3) {...}
+  # becomes
+  sub test_something {...}
+  __PACKAGE__->add_testinfo('test_something', test => 3);
+
+See the L<add_testinfo|/"add_testinfo"> method for more details.
 
 =head1 GENERAL FILTERING OF TESTS
 

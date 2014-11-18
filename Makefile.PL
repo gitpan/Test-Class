@@ -4,23 +4,23 @@ use ExtUtils::MakeMaker;
 WriteMakefile
 (
   'INSTALLDIRS' => 'site',
-  'VERSION_FROM' => 'lib/Test/Class.pm',
-  'EXE_FILES' => [],
+  'NAME' => 'Test::Class',
+  'PL_FILES' => {},
   'PREREQ_PM' => {
-                   'File::Find' => '0',
+                   'constant' => '0',
+                   'Storable' => '2.04',
+                   'MRO::Compat' => '0.11',
+                   'strict' => '0',
                    'File::Spec' => '0',
                    'Carp' => '0',
-                   'Storable' => '2.04',
-                   'warnings' => '0',
-                   'MRO::Compat' => '0.11',
-                   'Test::Builder::Tester' => '1.02',
-                   'constant' => '0',
                    'Test::Simple' => '1.001002',
+                   'Test::Builder::Tester' => '1.02',
+                   'warnings' => '0',
+                   'Attribute::Handlers' => '0.77',
                    'Test::Builder' => '0.78',
-                   'strict' => '0',
-                   'Attribute::Handlers' => '0.77'
+                   'File::Find' => '0'
                  },
-  'NAME' => 'Test::Class',
-  'PL_FILES' => {}
+  'EXE_FILES' => [],
+  'VERSION_FROM' => 'lib/Test/Class.pm'
 )
 ;
